@@ -34,3 +34,7 @@
     border: 1px solid #3869eb;
     border-radius: 2px;
 }
+
+.third-party-logo-container img {
+    height: 13px;
+}

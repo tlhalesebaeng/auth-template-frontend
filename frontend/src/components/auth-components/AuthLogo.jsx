@@ -1,3 +1,9 @@
-export default function AuthLogo() {
-    return <h1>Auth Logo</h1>;
+import './AuthLogo.css';
+
+export default function AuthLogo({ logoSrc }) {
+    return (
+        <button className="center">
+            <img src={logoSrc} />
+        </button>
+    );
 }
