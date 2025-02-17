@@ -1,5 +1,6 @@
 .remeber-me-container {
     justify-content: space-between;
+    align-items: center;
 }
 
 .remeber-me-container a {

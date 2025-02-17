@@ -1,5 +1,6 @@
 import AlternativeAuth from '../../components/auth-components/AlternativeAuth';
 import Auth from '../../components/auth-components/Auth';
+import AuthQuestion from '../../components/auth-components/AuthQuestion';
 import RememberMe from '../../components/auth-components/RememberMe';
 import Button from '../../utils/Button';
 import Input from '../../utils/Input';
@@ -13,12 +14,12 @@ export default function Login() {
                     <Input type="email" placeholder="Email" />
                 </div>
                 <RememberMe type="Login" checkboxText="Remember me" />
-                <div className="question-container column">
+                <AuthQuestion
+                    question="Don't have an account?"
+                    option="Sign up"
+                >
                     <Button title="Login" />
-                    <p>
-                        Don't have an account? <a href="#">Sign up</a>
-                    </p>
-                </div>
+                </AuthQuestion>
             </form>
             <AlternativeAuth alt="Login" />
         </Auth>
