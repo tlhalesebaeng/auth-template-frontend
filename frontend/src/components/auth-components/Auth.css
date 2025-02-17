@@ -28,31 +28,17 @@
     outline: none;
 }
 
-.btn {
-    height: 30px;
-    width: 100%;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    font-family: 'Poppins', Tahoma, Verdana, sans-serif;
-    font-size: 10px;
-    font-weight: 600;
-    background-color: #3869eb;
-    color: white;
-    border: none;
-    border-radius: 3px;
+.question-container {
+    align-items: center;
 }
 
-.question {
+.question-container p {
     font-size: 13px;
     margin-top: 5px;
     margin-bottom: 30px;
 }
-.question a {
+.question-container p a {
     font-size: 13px;
     color: #ff8682;
     text-decoration: none;
-}
-
-.question-container {
-    align-items: center;
 }

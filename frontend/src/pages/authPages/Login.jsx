@@ -15,7 +15,7 @@ export default function Login() {
                 <RememberMe type="Login" checkboxText="Remember me" />
                 <div className="question-container column">
                     <Button title="Login" />
-                    <p className="question">
+                    <p>
                         Don't have an account? <a href="#">Sign up</a>
                     </p>
                 </div>

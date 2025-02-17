@@ -1,0 +1,12 @@
+.long-text-input {
+    height: 30px;
+    width: 100%;
+    border: 1px solid #79747e;
+    border-radius: 3px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    padding-left: 10px;
+    font-family: 'Poppins', Tahoma, Verdana, sans-serif;
+    font-size: 12px;
+    outline: none;
+}
