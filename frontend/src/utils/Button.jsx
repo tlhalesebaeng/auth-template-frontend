@@ -1,3 +1,5 @@
-export default function Button() {
-    return <h1>Button</h1>;
+import './Button.css';
+
+export default function Button({ title }) {
+    return <button className="submit-btn">{title}</button>;
 }
