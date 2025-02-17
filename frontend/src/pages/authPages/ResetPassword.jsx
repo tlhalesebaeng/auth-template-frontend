@@ -1,3 +1,16 @@
+import Auth from '../../components/auth-components/Auth';
+import Button from '../../utils/Button';
+import Input from '../../utils/Input';
+
 export default function ResetPassword() {
-    return <h1>Set a new password</h1>;
+    const description = 'Please set a new password for your account';
+    return (
+        <Auth title="Set a new password" description={description}>
+            <div className="input-container column">
+                <Input type="password" placeholder="New Password" />
+                <Input type="password" placeholder="Confirm New Password" />
+            </div>
+            <Button title="Set password" />
+        </Auth>
+    );
 }

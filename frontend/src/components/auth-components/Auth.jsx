@@ -1,6 +1,6 @@
 import './Auth.css';
 
-export default function Auth({ title, children, description }) {
+export default function Auth({ children, title, description }) {
     return (
         <main className="auth-card column">
             <h1>{title}</h1>
