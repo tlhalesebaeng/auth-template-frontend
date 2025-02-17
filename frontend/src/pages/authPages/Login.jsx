@@ -1,4 +1,4 @@
-import Auth from '../../components/AuthComponents/Auth';
+import Auth from '../../components/auth-components/Auth';
 
 export default function Login() {
     return (
