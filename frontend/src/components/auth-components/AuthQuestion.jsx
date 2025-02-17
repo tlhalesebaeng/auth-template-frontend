@@ -1,8 +1,8 @@
 import './AuthQuestion.css';
 
-export default function AuthQuestion({ children, question, option }) {
+export default function AuthQuestion({ children, question, option, name }) {
     return (
-        <div className="question-container column">
+        <div className={`${name} column`}>
             {children}
             <p>
                 {question} <a href="#">{option}</a>

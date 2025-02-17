@@ -18,6 +18,7 @@ export default function Login() {
                 <AuthQuestion
                     question="Don't have an account?"
                     option="Sign up"
+                    name="question-container"
                 >
                     <Button>Login</Button>
                 </AuthQuestion>

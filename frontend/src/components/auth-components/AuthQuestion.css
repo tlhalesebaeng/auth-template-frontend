@@ -2,10 +2,12 @@
     align-items: center;
 }
 
+.other-question-container,
 .question-container p {
     font-size: 13px;
     margin: 5px 0px;
 }
+.other-question-container p a,
 .question-container p a {
     font-size: 13px;
     color: #ff8682;
