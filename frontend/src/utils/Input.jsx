@@ -1,3 +1,3 @@
-export default function Input({ type }) {
-    return <input type={type} placeholder="Email" />;
+export default function Input({ type, placeholder }) {
+    return <input type={type} placeholder={placeholder} />;
 }
