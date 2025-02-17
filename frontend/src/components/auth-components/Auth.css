@@ -14,43 +14,6 @@
     margin-bottom: 20px;
 }
 
-.line-container {
-    width: 100%;
-    align-items: center;
-    position: relative;
-}
-
-.line-container p {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 13px;
-    color: rgba(49, 49, 49, 0.5);
-    background-color: white;
-    padding: 0px 15px;
-}
-
-.line-container hr {
-    width: 100%;
-    /* border: 0.1px solid rgba(49, 49, 49, 0.5); */
-    margin: 0px;
-}
-
-.third-party-logo-container {
-    width: 100%;
-    justify-content: space-between;
-    margin-top: 30px;
-}
-
-.third-party-logo-container button {
-    background-color: white;
-    height: 32px;
-    width: 30%;
-    border: 1px solid #3869eb;
-    border-radius: 2px;
-}
-
 /* Input util styles, to be removed */
 .input-container input {
     height: 30px;

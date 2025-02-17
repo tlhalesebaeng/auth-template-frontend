@@ -1,3 +1,4 @@
+import AlternativeAuth from '../../components/auth-components/AlternativeAuth';
 import Auth from '../../components/auth-components/Auth';
 import RememberMe from '../../components/auth-components/RememberMe';
 import Button from '../../utils/Button';
@@ -17,6 +18,7 @@ export default function Login() {
                     Don't have an account? <a href="#">Sign up</a>
                 </p>
             </div>
+            <AlternativeAuth alt="Login" />
         </Auth>
     );
 }
