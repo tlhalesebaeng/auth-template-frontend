@@ -65,27 +65,6 @@
     outline: none;
 }
 
-.remeber-me-container {
-    justify-content: space-between;
-}
-
-.remeber-me-container a {
-    font-size: 13px;
-    color: #ff8682;
-    text-decoration: none;
-}
-
-.remeber-me-container div {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-}
-
-.remeber-me-container div p {
-    font-size: 13px;
-    margin-left: 5px;
-}
-
 .btn {
     height: 30px;
     width: 100%;
