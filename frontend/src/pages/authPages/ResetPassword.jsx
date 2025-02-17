@@ -10,7 +10,7 @@ export default function ResetPassword() {
                 <Input type="password" placeholder="New Password" />
                 <Input type="password" placeholder="Confirm New Password" />
             </div>
-            <Button title="Set password" />
+            <Button>Set password</Button>
         </Auth>
     );
 }

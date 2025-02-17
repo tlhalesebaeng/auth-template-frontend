@@ -19,7 +19,7 @@ export default function Login() {
                     question="Don't have an account?"
                     option="Sign up"
                 >
-                    <Button title="Login" />
+                    <Button>Login</Button>
                 </AuthQuestion>
             </form>
             <AlternativeAuth alt="Login" />
