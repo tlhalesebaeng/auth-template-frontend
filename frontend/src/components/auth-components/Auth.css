@@ -34,8 +34,7 @@
 
 .question-container p {
     font-size: 13px;
-    margin-top: 5px;
-    margin-bottom: 30px;
+    margin: 5px 0px;
 }
 .question-container p a {
     font-size: 13px;
