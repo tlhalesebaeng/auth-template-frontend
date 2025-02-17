@@ -19,31 +19,3 @@
     color: rgba(49, 49, 49, 0.75);
     margin-bottom: 20px;
 }
-
-/* Input util styles, to be removed */
-.input-container input {
-    height: 30px;
-    width: 100%;
-    border: 1px solid #79747e;
-    border-radius: 3px;
-    margin-bottom: 15px;
-    box-sizing: border-box;
-    padding-left: 10px;
-    font-family: 'Poppins', Tahoma, Verdana, sans-serif;
-    font-size: 12px;
-    outline: none;
-}
-
-.question-container {
-    align-items: center;
-}
-
-.question-container p {
-    font-size: 13px;
-    margin: 5px 0px;
-}
-.question-container p a {
-    font-size: 13px;
-    color: #ff8682;
-    text-decoration: none;
-}

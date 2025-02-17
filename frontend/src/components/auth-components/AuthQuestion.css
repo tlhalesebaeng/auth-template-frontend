@@ -1,0 +1,13 @@
+.question-container {
+    align-items: center;
+}
+
+.question-container p {
+    font-size: 13px;
+    margin: 5px 0px;
+}
+.question-container p a {
+    font-size: 13px;
+    color: #ff8682;
+    text-decoration: none;
+}
