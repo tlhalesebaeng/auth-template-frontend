@@ -1,4 +1,5 @@
 import Auth from '../../components/auth-components/Auth';
+import RememberMe from '../../components/auth-components/RememberMe';
 import Button from '../../utils/Button';
 import Input from '../../utils/Input';
 
@@ -9,13 +10,7 @@ export default function Login() {
                 <Input type="email" placeholder="Email" />
                 <Input type="email" placeholder="Email" />
             </div>
-            <div className="remeber-me-container row">
-                <div>
-                    <input type="checkbox" />
-                    <p>Remember me</p>
-                </div>
-                <a href="#">Forgot Password</a>
-            </div>
+            <RememberMe type="Login" checkboxText="Remember me" />
             <div className="question-container column">
                 <Button title="Login" />
                 <p className="question">
