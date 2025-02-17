@@ -6,8 +6,9 @@ import Button from '../../utils/Button';
 import Input from '../../utils/Input';
 
 export default function Login() {
+    const description = 'Login in to access your account';
     return (
-        <Auth title="Login">
+        <Auth title="Login" description={description}>
             <form>
                 <div className="input-container column">
                     <Input type="email" placeholder="Email" />

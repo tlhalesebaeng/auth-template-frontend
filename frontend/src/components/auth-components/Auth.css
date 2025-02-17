@@ -14,6 +14,12 @@
     margin-bottom: 20px;
 }
 
+.description {
+    font-size: 13px;
+    color: rgba(49, 49, 49, 0.75);
+    margin-bottom: 20px;
+}
+
 /* Input util styles, to be removed */
 .input-container input {
     height: 30px;
