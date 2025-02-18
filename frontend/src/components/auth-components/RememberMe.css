@@ -9,6 +9,12 @@
     text-decoration: none;
 }
 
+.remeber-me-container a:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+}
+
 .remeber-me-container div {
     display: flex;
     align-items: center;

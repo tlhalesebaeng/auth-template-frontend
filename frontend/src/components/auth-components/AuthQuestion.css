@@ -13,3 +13,9 @@
     color: #ff8682;
     text-decoration: none;
 }
+
+.question-container p a:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+}
