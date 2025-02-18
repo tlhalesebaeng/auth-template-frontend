@@ -1,8 +1,8 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Auth from '../../components/auth-components/Auth';
 import Button from '../../utils/Button';
 import Input from '../../utils/Input';
-import { useState } from 'react';
 
 export default function ResetPassword() {
     const navigate = useNavigate();

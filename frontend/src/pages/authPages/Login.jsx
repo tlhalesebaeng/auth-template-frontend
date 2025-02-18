@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AlternativeAuth from '../../components/auth-components/AlternativeAuth';
 import Auth from '../../components/auth-components/Auth';
@@ -5,7 +6,6 @@ import AuthQuestion from '../../components/auth-components/AuthQuestion';
 import RememberMe from '../../components/auth-components/RememberMe';
 import Button from '../../utils/Button';
 import Input from '../../utils/Input';
-import { useState } from 'react';
 
 export default function Login() {
     const navigate = useNavigate();

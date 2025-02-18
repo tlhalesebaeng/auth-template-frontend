@@ -1,9 +1,9 @@
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Auth from '../../components/auth-components/Auth';
 import AuthQuestion from '../../components/auth-components/AuthQuestion';
 import Input from '../../utils/Input';
 import Button from '../../utils/Button';
-import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
 
 export default function CodeVerification() {
     const navigate = useNavigate();
