@@ -13,23 +13,12 @@ export default function Login() {
 
     //will use this function in many places, so create your own hook to handle this
     function handleChange(event, type) {
-        if (type === 'email') {
-            setData((prevState) => {
-                return {
-                    ...prevState,
-                    email: event.target.value,
-                };
-            });
-        }
-
-        if (type === 'password') {
-            setData((prevState) => {
-                return {
-                    ...prevState,
-                    password: event.target.value,
-                };
-            });
-        }
+        setData((prevState) => {
+            return {
+                ...prevState,
+                [type]: event.target.value,
+            };
+        });
     }
 
     // Function to login the user
