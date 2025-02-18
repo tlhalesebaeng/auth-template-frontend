@@ -2,14 +2,18 @@ import Auth from '../../components/auth-components/Auth';
 import AuthQuestion from '../../components/auth-components/AuthQuestion';
 import Input from '../../utils/Input';
 import Button from '../../utils/Button';
+import { useNavigate } from 'react-router-dom';
 
 export default function CodeVerification() {
-    const description = 'Enter the one time code sent to your email.';
+    const navigate = useNavigate();
 
     function handleSubmitCode(event) {
         event.preventDefault();
-        console.log('Code submitted');
+        navigate('/users/password/reset/entry');
     }
+
+    const description = 'Enter the one time code sent to your email.';
+
     return (
         <Auth
             title="Verify Code"

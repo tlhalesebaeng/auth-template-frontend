@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import AlternativeAuth from '../../components/auth-components/AlternativeAuth';
 import Auth from '../../components/auth-components/Auth';
 import AuthQuestion from '../../components/auth-components/AuthQuestion';
@@ -6,11 +7,14 @@ import Button from '../../utils/Button';
 import Input from '../../utils/Input';
 
 export default function Login() {
-    const description = 'Login in to access your account';
+    const navigate = useNavigate();
+
     function handleLogin(event) {
         event.preventDefault();
-        console.log('Login');
+        navigate('/home');
     }
+
+    const description = 'Login in to access your account';
 
     return (
         <Auth title="Login" description={description}>

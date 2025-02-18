@@ -2,15 +2,19 @@ import Auth from '../../components/auth-components/Auth';
 import AlternativeAuth from '../../components/auth-components/AlternativeAuth';
 import Input from '../../utils/Input';
 import Button from '../../utils/Button';
+import { useNavigate } from 'react-router-dom';
 
 export default function ForgotPassword() {
-    const description =
-        "Don't worry, enter your email below to reset your password.";
+    const navigate = useNavigate();
 
     function handleSubmitEmail(event) {
         event.preventDefault();
-        console.log('Email submitted');
+        navigate('/users/password/reset/code');
     }
+
+    const description =
+        "Don't worry, enter your email below to reset your password.";
+
     return (
         <Auth
             title="Forgot your password?"

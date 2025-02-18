@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import './RememberMe.css';
 
 export default function RememberMe({ type, checkboxText }) {
@@ -7,7 +8,9 @@ export default function RememberMe({ type, checkboxText }) {
                 <input type="checkbox" />
                 <p>{checkboxText}</p>
             </div>
-            {type && <a href="#">Forgot Password</a>}
+            {type && (
+                <NavLink to="/users/password/reset">Forgot Password</NavLink>
+            )}
         </div>
     );
 }
