@@ -12,15 +12,23 @@ export default function Signup() {
             <form>
                 <div className="input-container column">
                     <div className="row">
-                        <Input type="text" placeholder="First Name" />
+                        <Input
+                            rightMargin="right-margin"
+                            type="text"
+                            placeholder="First Name"
+                        />
                         <Input type="text" placeholder="Last Name" />
                     </div>
                     <div className="row">
-                        <Input type="text" placeholder="Email" />
+                        <Input
+                            rightMargin="right-margin"
+                            type="text"
+                            placeholder="Email"
+                        />
                         <Input type="text" placeholder="Username" />
                     </div>
                     <Input type="password" placeholder="Password" />
-                    <Input type="passwrod" placeholder="Confirm Password" />
+                    <Input type="password" placeholder="Confirm Password" />
                 </div>
                 <AuthQuestion
                     question="Already have an account?"

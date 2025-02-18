@@ -42,3 +42,7 @@ button {
     display: flex;
     flex-direction: column;
 }
+
+.right-margin {
+    margin-right: 10px;
+}
