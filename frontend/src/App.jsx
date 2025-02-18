@@ -5,6 +5,7 @@ import ResetPassword from './pages/authPages/ResetPassword';
 import ForgotPassword from './pages/authPages/ForgotPassword';
 import CodeVerification from './pages/authPages/CodeVerification';
 import './App.css';
+import Home from './components/app-components/Home';
 
 const router = createBrowserRouter([
     {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
     {
         path: '/users/password/reset/entry',
         element: <ResetPassword />,
+    },
+    {
+        path: '/home',
+        element: <Home />,
     },
 ]);
 
