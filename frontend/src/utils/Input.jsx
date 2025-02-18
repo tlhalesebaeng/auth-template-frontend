@@ -27,7 +27,7 @@ export default function Input({ type = 'text', placeholder }) {
     return (
         <div className="input-group">
             <input type={inputType} placeholder=" " />
-            <label for="">{placeholder}</label>
+            <label htmlFor="">{placeholder}</label>
             {type === 'password' && (
                 <img onClick={handleInputLogo} src={inputLogo} />
             )}
