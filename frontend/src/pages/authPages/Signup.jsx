@@ -1,12 +1,15 @@
 import AlternativeAuth from '../../components/auth-components/AlternativeAuth';
 import Auth from '../../components/auth-components/Auth';
 import AuthQuestion from '../../components/auth-components/AuthQuestion';
-import RememberMe from '../../components/auth-components/RememberMe';
 import Button from '../../utils/Button';
 import Input from '../../utils/Input';
 
 export default function Signup() {
     const description = 'Set up a new account for your profile';
+    function handleCreateAccount(event) {
+        event.preventDefault();
+        console.log('Create new account');
+    }
     return (
         <Auth title="Sign up" description={description}>
             <form>
@@ -35,10 +38,12 @@ export default function Signup() {
                     option="Login"
                     name="question-container"
                 >
-                    <Button>Create account</Button>
+                    <Button onClick={handleCreateAccount}>
+                        Create account
+                    </Button>
                 </AuthQuestion>
             </form>
-            <AlternativeAuth alt="Signup" />
+            <AlternativeAuth action="Signup" alt="Signup" />
         </Auth>
     );
 }

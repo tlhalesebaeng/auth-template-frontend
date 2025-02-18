@@ -1,8 +1,8 @@
 import './AuthLogo.css';
 
-export default function AuthLogo({ logoSrc }) {
+export default function AuthLogo({ logoSrc, onClick }) {
     return (
-        <button className="center">
+        <button onClick={onClick} className="center">
             <img src={logoSrc} />
         </button>
     );

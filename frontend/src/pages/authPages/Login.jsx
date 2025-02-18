@@ -7,6 +7,11 @@ import Input from '../../utils/Input';
 
 export default function Login() {
     const description = 'Login in to access your account';
+    function handleLogin(event) {
+        event.preventDefault();
+        console.log('Login');
+    }
+
     return (
         <Auth title="Login" description={description}>
             <form>
@@ -20,10 +25,10 @@ export default function Login() {
                     option="Sign up"
                     name="question-container"
                 >
-                    <Button>Login</Button>
+                    <Button onClick={handleLogin}>Login</Button>
                 </AuthQuestion>
             </form>
-            <AlternativeAuth alt="Login" />
+            <AlternativeAuth action="Login" alt="Login" />
         </Auth>
     );
 }

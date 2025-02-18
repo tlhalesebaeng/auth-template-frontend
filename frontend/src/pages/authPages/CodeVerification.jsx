@@ -5,6 +5,11 @@ import Button from '../../utils/Button';
 
 export default function CodeVerification() {
     const description = 'Enter the one time code sent to your email.';
+
+    function handleSubmitCode(event) {
+        event.preventDefault();
+        console.log('Code submitted');
+    }
     return (
         <Auth
             title="Verify Code"
@@ -20,7 +25,7 @@ export default function CodeVerification() {
                     option="Resend"
                     name="other-question-container"
                 ></AuthQuestion>
-                <Button>Submit</Button>
+                <Button onClick={handleSubmitCode}>Submit</Button>
             </form>
         </Auth>
     );

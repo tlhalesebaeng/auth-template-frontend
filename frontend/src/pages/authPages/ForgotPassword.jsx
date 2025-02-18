@@ -6,6 +6,11 @@ import Button from '../../utils/Button';
 export default function ForgotPassword() {
     const description =
         "Don't worry, enter your email below to reset your password.";
+
+    function handleSubmitEmail(event) {
+        event.preventDefault();
+        console.log('Email submitted');
+    }
     return (
         <Auth
             title="Forgot your password?"
@@ -16,7 +21,7 @@ export default function ForgotPassword() {
                 <div className="input-container column">
                     <Input type="email" placeholder="Email" />
                 </div>
-                <Button>Login</Button>
+                <Button onClick={handleSubmitEmail}>Submit</Button>
             </form>
             <AlternativeAuth alt="Login" />
         </Auth>

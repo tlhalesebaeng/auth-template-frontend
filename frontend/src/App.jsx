@@ -4,8 +4,8 @@ import Signup from './pages/authPages/Signup';
 import ResetPassword from './pages/authPages/ResetPassword';
 import ForgotPassword from './pages/authPages/ForgotPassword';
 import CodeVerification from './pages/authPages/CodeVerification';
-import './App.css';
 import Home from './components/app-components/Home';
+import './App.css';
 
 const router = createBrowserRouter([
     {
@@ -13,7 +13,7 @@ const router = createBrowserRouter([
         element: <Login />,
     },
     {
-        path: '/signup',
+        path: '/users/signup',
         element: <Signup />,
     },
     {
