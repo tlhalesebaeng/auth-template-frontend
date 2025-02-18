@@ -7,6 +7,8 @@ export default function AuthQuestion({ children, question, option, name }) {
         optionUrl = '/';
     } else if (option === 'Sign up') {
         optionUrl = '/users/signup';
+    } else if (option === 'Resend') {
+        //resend the url
     }
 
     return (
