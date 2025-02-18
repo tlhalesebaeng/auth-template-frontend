@@ -10,4 +10,13 @@
     color: white;
     border: none;
     border-radius: 3px;
+    transition: opacity 0.15s;
+}
+
+.submit-btn:hover {
+    opacity: 0.9;
+}
+
+.submit-btn:active {
+    opacity: 0.7;
 }
