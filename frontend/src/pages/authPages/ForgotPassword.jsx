@@ -3,13 +3,20 @@ import AlternativeAuth from '../../components/auth-components/AlternativeAuth';
 import Input from '../../utils/Input';
 import Button from '../../utils/Button';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 export default function ForgotPassword() {
     const navigate = useNavigate();
+    const [email, setEmail] = useState();
 
     function handleSubmitEmail(event) {
         event.preventDefault();
         navigate('/users/password/reset/code');
+    }
+
+    let disabledButton = false;
+    if (!email) {
+        disabledButton = true;
     }
 
     const description =
@@ -23,9 +30,20 @@ export default function ForgotPassword() {
         >
             <form>
                 <div className="input-container column">
-                    <Input type="email" placeholder="Email" />
+                    <Input
+                        onChange={(event) => {
+                            setEmail(event.target.value);
+                        }}
+                        type="email"
+                        placeholder="Email"
+                    />
                 </div>
-                <Button onClick={handleSubmitEmail}>Submit</Button>
+                <Button
+                    disabledButton={disabledButton}
+                    onClick={handleSubmitEmail}
+                >
+                    Submit
+                </Button>
             </form>
             <AlternativeAuth alt="Login" />
         </Auth>

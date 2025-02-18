@@ -3,13 +3,20 @@ import AuthQuestion from '../../components/auth-components/AuthQuestion';
 import Input from '../../utils/Input';
 import Button from '../../utils/Button';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 export default function CodeVerification() {
     const navigate = useNavigate();
+    const [code, setCode] = useState();
 
     function handleSubmitCode(event) {
         event.preventDefault();
         navigate('/users/password/reset/entry');
+    }
+
+    let disabledButton = false;
+    if (!code) {
+        disabledButton = true;
     }
 
     const description = 'Enter the one time code sent to your email.';
@@ -22,14 +29,25 @@ export default function CodeVerification() {
         >
             <form>
                 <div className="input-container column">
-                    <Input type="text" placeholder="Enter Code" />
+                    <Input
+                        onChange={(event) => {
+                            setCode(event.target.value);
+                        }}
+                        type="text"
+                        placeholder="Enter Code"
+                    />
                 </div>
                 <AuthQuestion
                     question="Didn't receive the code?"
                     option="Resend"
                     name="other-question-container"
                 ></AuthQuestion>
-                <Button onClick={handleSubmitCode}>Submit</Button>
+                <Button
+                    disabledButton={disabledButton}
+                    onClick={handleSubmitCode}
+                >
+                    Submit
+                </Button>
             </form>
         </Auth>
     );
