@@ -5,13 +5,42 @@ import AuthQuestion from '../../components/auth-components/AuthQuestion';
 import RememberMe from '../../components/auth-components/RememberMe';
 import Button from '../../utils/Button';
 import Input from '../../utils/Input';
+import { useState } from 'react';
 
 export default function Login() {
     const navigate = useNavigate();
+    const [data, setData] = useState({}); //This will cause the whole component to reload and cause some performance implications
 
+    //will use this function in many places, so create your own hook to handle this
+    function handleChange(event, type) {
+        if (type === 'email') {
+            setData((prevState) => {
+                return {
+                    ...prevState,
+                    email: event.target.value,
+                };
+            });
+        }
+
+        if (type === 'password') {
+            setData((prevState) => {
+                return {
+                    ...prevState,
+                    password: event.target.value,
+                };
+            });
+        }
+    }
+
+    // Function to login the user
     function handleLogin(event) {
         event.preventDefault();
         navigate('/home');
+    }
+
+    let disabledButton = false;
+    if (!data.email || !data.password) {
+        disabledButton = true;
     }
 
     const description = 'Login in to access your account';
@@ -20,8 +49,20 @@ export default function Login() {
         <Auth title="Login" description={description}>
             <form>
                 <div className="input-container column">
-                    <Input type="email" placeholder="Email" />
-                    <Input type="password" placeholder="Password" />
+                    <Input
+                        onChange={(event) => {
+                            handleChange(event, 'email');
+                        }}
+                        type="email"
+                        placeholder="Email"
+                    />
+                    <Input
+                        onChange={(event) => {
+                            handleChange(event, 'password');
+                        }}
+                        type="password"
+                        placeholder="Password"
+                    />
                 </div>
                 <RememberMe type="Login" checkboxText="Remember me" />
                 <AuthQuestion
@@ -29,7 +70,12 @@ export default function Login() {
                     option="Sign up"
                     name="question-container"
                 >
-                    <Button onClick={handleLogin}>Login</Button>
+                    <Button
+                        disabledButton={disabledButton}
+                        onClick={handleLogin}
+                    >
+                        Login
+                    </Button>
                 </AuthQuestion>
             </form>
             <AlternativeAuth action="Login" alt="Login" />

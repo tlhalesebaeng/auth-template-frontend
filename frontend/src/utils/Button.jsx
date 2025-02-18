@@ -1,8 +1,12 @@
 import './Button.css';
 
-export default function Button({ children, onClick }) {
+export default function Button({ disabledButton, children, onClick }) {
     return (
-        <button onClick={onClick} className="submit-btn">
+        <button
+            disabled={disabledButton}
+            onClick={onClick}
+            className={disabledButton ? 'reduced-opacity-btn' : 'submit-btn'}
+        >
             {children}
         </button>
     );

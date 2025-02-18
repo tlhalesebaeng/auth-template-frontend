@@ -3,7 +3,12 @@ import hiddenPassword from '../assets/hidden-password-logo.png';
 import './Input.css';
 import { useRef, useState } from 'react';
 
-export default function Input({ type = 'text', placeholder, rightMargin }) {
+export default function Input({
+    onChange,
+    type = 'text',
+    placeholder,
+    rightMargin,
+}) {
     const [inputType, setInputType] = useState(type);
     const [inputLogo, setInputLogo] = useState(hiddenPassword);
     const inputRef = useRef();
@@ -30,6 +35,7 @@ export default function Input({ type = 'text', placeholder, rightMargin }) {
     return (
         <div className={`${rightMargin} input-group`}>
             <input
+                onChange={onChange}
                 ref={inputRef}
                 type={inputType}
                 placeholder=" "
