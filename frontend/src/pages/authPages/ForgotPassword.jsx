@@ -7,7 +7,11 @@ export default function ForgotPassword() {
     const description =
         "Don't worry, enter your email below to reset your password.";
     return (
-        <Auth title="Forgot your password?" description={description}>
+        <Auth
+            title="Forgot your password?"
+            description={description}
+            backTitle="Back to login"
+        >
             <form>
                 <div className="input-container column">
                     <Input type="email" placeholder="Email" />

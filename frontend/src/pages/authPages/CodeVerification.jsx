@@ -6,7 +6,11 @@ import Button from '../../utils/Button';
 export default function CodeVerification() {
     const description = 'Enter the one time code sent to your email.';
     return (
-        <Auth title="Verify Code" description={description}>
+        <Auth
+            title="Verify Code"
+            description={description}
+            backTitle="Back to login"
+        >
             <form>
                 <div className="input-container column">
                     <Input type="text" placeholder="Enter Code" />

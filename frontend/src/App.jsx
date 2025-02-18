@@ -6,5 +6,5 @@ import CodeVerification from './pages/authPages/CodeVerification';
 import './App.css';
 
 export default function App() {
-    return <Login />;
+    return <ForgotPassword />;
 }
