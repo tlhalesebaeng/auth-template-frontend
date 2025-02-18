@@ -34,6 +34,7 @@ export default function Input({ type = 'text', placeholder, rightMargin }) {
                 type={inputType}
                 placeholder=" "
                 autoComplete="on"
+                name={type}
             />
             <label htmlFor="">{placeholder}</label>
             {type === 'password' && (
