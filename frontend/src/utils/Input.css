@@ -33,3 +33,14 @@
     left: 5px;
     padding: 0px 5px;
 }
+
+.input-group img {
+    height: 15px;
+    position: absolute;
+    top: 7px;
+    right: 10px;
+}
+
+.input-group img:hover {
+    cursor: pointer;
+}
