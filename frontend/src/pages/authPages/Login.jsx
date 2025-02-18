@@ -12,7 +12,7 @@ export default function Login() {
             <form>
                 <div className="input-container column">
                     <Input type="email" placeholder="Email" />
-                    <Input type="email" placeholder="Email" />
+                    <Input type="password" placeholder="Password" />
                 </div>
                 <RememberMe type="Login" checkboxText="Remember me" />
                 <AuthQuestion
