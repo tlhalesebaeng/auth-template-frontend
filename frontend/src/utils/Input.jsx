@@ -29,7 +29,12 @@ export default function Input({ type = 'text', placeholder, rightMargin }) {
 
     return (
         <div className={`${rightMargin} input-group`}>
-            <input ref={inputRef} type={inputType} placeholder=" " />
+            <input
+                ref={inputRef}
+                type={inputType}
+                placeholder=" "
+                autoComplete="on"
+            />
             <label htmlFor="">{placeholder}</label>
             {type === 'password' && (
                 <img onClick={handleInputLogo} src={inputLogo} />

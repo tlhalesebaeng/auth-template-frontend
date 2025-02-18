@@ -15,11 +15,13 @@ export default function ResetPassword() {
 
     return (
         <Auth title="Set a new password" description={description}>
-            <div className="input-container column">
-                <Input type="password" placeholder="New Password" />
-                <Input type="password" placeholder="Confirm New Password" />
-            </div>
-            <Button onClick={handleSetPassword}>Set password</Button>
+            <form>
+                <div className="input-container column">
+                    <Input type="password" placeholder="New Password" />
+                    <Input type="password" placeholder="Confirm New Password" />
+                </div>
+                <Button onClick={handleSetPassword}>Set password</Button>
+            </form>
         </Auth>
     );
 }
