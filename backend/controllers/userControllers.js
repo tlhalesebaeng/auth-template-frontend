@@ -39,7 +39,32 @@ exports.signup = async (req, res) => {
     }
 };
 
-exports.login = async (req, res) => {};
+exports.login = async (req, res) => {
+    try {
+        const { email, password } = req.body;
+
+        if (!email || !password) {
+            res.status(400).json({
+                status: 'fail',
+                message: 'Please provide an email and password',
+            });
+        }
+
+        const user = await User.findOne({ email });
+
+        const token = '';
+        res.status(201).json({
+            status: 'success',
+            token,
+            data: user,
+        });
+    } catch (err) {
+        res.status(404).json({
+            status: 'fail',
+            message: err,
+        });
+    }
+};
 
 exports.updateUser = async (req, res) => {
     try {
