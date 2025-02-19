@@ -18,22 +18,6 @@ exports.getAllUsers = async (req, res) => {
     }
 };
 
-exports.getUser = async (req, res) => {
-    try {
-        const user = await User.findById(req.params.id);
-
-        res.status(200).json({
-            status: 'success',
-            data: user,
-        });
-    } catch (err) {
-        res.status(200).json({
-            status: 'fail',
-            message: err,
-        });
-    }
-};
-
 exports.signup = async (req, res) => {
     try {
         const newUser = await User.create(req.body);
@@ -54,6 +38,8 @@ exports.signup = async (req, res) => {
         });
     }
 };
+
+exports.login = async (req, res) => {};
 
 exports.updateUser = async (req, res) => {
     try {

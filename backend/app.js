@@ -12,6 +12,6 @@ if (process.env.NODE_ENV === 'development') {
 }
 app.use(express.json()); //middleware to add the incoming body data to the request object
 
-app.use('/quiz/app/api/v1', usersRoute);
+app.use('/quiz/app/api/v1/users', usersRoute);
 
 module.exports = app;
