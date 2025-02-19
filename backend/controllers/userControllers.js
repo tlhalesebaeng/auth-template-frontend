@@ -44,19 +44,26 @@ exports.login = async (req, res) => {
         const { email, password } = req.body;
 
         if (!email || !password) {
-            res.status(400).json({
+            return res.status(400).json({
                 status: 'fail',
                 message: 'Please provide an email and password',
             });
         }
 
         const user = await User.findOne({ email });
+        const correct = user.correctPassword(password, user.password);
+
+        if (!user || !correct) {
+            return res.status(404).json({
+                status: 'fail',
+                message: 'Incorrect email or password',
+            });
+        }
 
         const token = '';
-        res.status(201).json({
+        res.status(200).json({
             status: 'success',
             token,
-            data: user,
         });
     } catch (err) {
         res.status(404).json({
