@@ -9,8 +9,7 @@ const assignToken = async (id) => {
 exports.signup = async (req, res) => {
     try {
         const newUser = await User.create(req.body);
-
-        const token = assignToken(newUser._id);
+        const token = await assignToken(newUser._id);
 
         res.status(201).json({
             status: 'success',
