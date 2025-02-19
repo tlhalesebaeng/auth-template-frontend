@@ -7,12 +7,14 @@ const app = express();
 
 dotenv.config({ path: './config.env' });
 
+if (process.env.NODE_ENV === 'development') {
+    app.use(morgan('dev')); //middleware to log some request data
+}
 app.use(express.json()); //middleware to add the incoming body data to the request object
-app.use(morgan('dev')); //middleware to log some request data
 
 app.use('/quiz/app/api/v1', usersRoute);
 
-const port = 3000;
+const port = process.env.PORT || 3000;
 app.listen(port, () => {
     console.log(`Listening on port ${port}..`);
 });
