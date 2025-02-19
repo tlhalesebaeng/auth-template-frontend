@@ -11,17 +11,26 @@ exports.getAllUsers = async (req, res) => {
         });
     } catch (err) {
         res.status(200).json({
-            status: 'success',
+            status: 'fail',
             message: err,
         });
     }
 };
 
-exports.getUser = (req, res) => {
-    res.status(200).json({
-        status: 'success',
-        data: `get user ${req.params.id}`,
-    });
+exports.getUser = async (req, res) => {
+    try {
+        const user = await User.findById(req.params.id);
+
+        res.status(200).json({
+            status: 'success',
+            data: user,
+        });
+    } catch (err) {
+        res.status(200).json({
+            status: 'fail',
+            message: err,
+        });
+    }
 };
 
 exports.createUser = async (req, res) => {
@@ -34,7 +43,7 @@ exports.createUser = async (req, res) => {
         });
     } catch (err) {
         res.status(400).json({
-            status: 'success',
+            status: 'fail',
             message: err,
         });
     }
