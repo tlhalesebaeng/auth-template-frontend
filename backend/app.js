@@ -19,6 +19,13 @@ app.get('/quiz/app/api/v1/users/:id', (req, res) => {
 });
 
 app.post('/quiz/app/api/v1/users', (req, res) => {
+    res.status(201).json({
+        status: 'success',
+        data: req.body,
+    });
+});
+
+app.patch('/quiz/app/api/v1/users/:id', (req, res) => {
     res.status(200).json({
         status: 'success',
         data: req.body,
