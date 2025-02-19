@@ -1,4 +1,3 @@
-const jwt = require('jsonwebtoken');
 const User = require('../Model/userModel');
 
 exports.getAllUsers = async (req, res) => {

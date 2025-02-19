@@ -1,10 +1,16 @@
+const jwt = require('jsonwebtoken');
+const User = require('../Model/userModel');
+
+const assignToken = async (id) => {
+    return jwt.sign({ id }, process.env.JWT_SECRET, {
+        expiresIn: process.env.JWT_EXPIRES_IN,
+    });
+};
 exports.signup = async (req, res) => {
     try {
         const newUser = await User.create(req.body);
 
-        const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET, {
-            expiresIn: process.env.JWT_EXPIRES_IN,
-        });
+        const token = assignToken(newUser._id);
 
         res.status(201).json({
             status: 'success',
@@ -31,7 +37,7 @@ exports.login = async (req, res) => {
         }
 
         const user = await User.findOne({ email });
-        const correct = user.correctPassword(password, user.password);
+        const correct = await user.correctPassword(password, user.password);
 
         if (!user || !correct) {
             return res.status(404).json({
@@ -40,7 +46,8 @@ exports.login = async (req, res) => {
             });
         }
 
-        const token = '';
+        const token = await assignToken(user._id);
+
         res.status(200).json({
             status: 'success',
             token,
