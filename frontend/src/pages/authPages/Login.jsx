@@ -6,6 +6,7 @@ import AuthQuestion from '../../components/auth-components/AuthQuestion';
 import RememberMe from '../../components/auth-components/RememberMe';
 import Button from '../../utils/Button';
 import Input from '../../utils/Input';
+import { isValidEmail } from '../../validators';
 
 export default function Login() {
     const navigate = useNavigate();
