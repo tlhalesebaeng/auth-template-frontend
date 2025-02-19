@@ -7,11 +7,6 @@ import RememberMe from '../../components/auth-components/RememberMe';
 import Button from '../../utils/Button';
 import Input from '../../utils/Input';
 
-function isValidEmail(email) {
-    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$/;
-    return regex.test(email);
-}
-
 export default function Login() {
     const navigate = useNavigate();
     const [data, setData] = useState({}); //This will cause the whole component to reload and cause some performance implications
