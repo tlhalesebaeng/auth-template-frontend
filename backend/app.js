@@ -1,23 +1,13 @@
 const express = require('express');
 const morgan = require('morgan');
-const {
-    getAllUsers,
-    getUser,
-    createUser,
-    updateUser,
-    deleteUser,
-} = require('./controllers/userControllers');
+const usersRoute = require('./routes/userRoutes');
 
 const app = express();
 
 app.use(express.json()); //middleware to add the incoming body data to the request object
-app.use(morgan('dev'));
+app.use(morgan('dev')); //middleware to log some request data
 
-app.route('/quiz/app/api/v1/users').get(getAllUsers).post(createUser);
-app.route('/quiz/app/api/v1/users/:id')
-    .get(getUser)
-    .patch(updateUser)
-    .delete(deleteUser);
+app.use('/quiz/app/api/v1', usersRoute);
 
 const port = 3000;
 app.listen(port, () => {
