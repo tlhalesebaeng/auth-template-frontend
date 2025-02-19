@@ -14,7 +14,7 @@ app.use(express.json()); //middleware to add the incoming body data to the reque
 
 app.use('/quiz/app/api/v1', usersRoute);
 
-const port = process.env.PORT || 3000;
+const port = 3000;
 app.listen(port, () => {
     console.log(`Listening on port ${port}..`);
 });
