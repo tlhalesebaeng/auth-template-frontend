@@ -4,6 +4,7 @@ import Auth from '../../components/auth-components/Auth';
 import AuthQuestion from '../../components/auth-components/AuthQuestion';
 import Button from '../../utils/Button';
 import Input from '../../utils/Input';
+import { isValidEmail } from '../../validators';
 
 export default function Signup() {
     const [data, setData] = useState({});
@@ -29,7 +30,8 @@ export default function Signup() {
         !data.email ||
         !data.username ||
         !data.password ||
-        !data.confirmPassword
+        !data.confirmPassword ||
+        !isValidEmail(data.email)
     ) {
         disabledButton = true;
     }
