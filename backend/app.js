@@ -32,6 +32,13 @@ app.patch('/quiz/app/api/v1/users/:id', (req, res) => {
     });
 });
 
+app.delete('/quiz/app/api/v1/users/:id', (req, res) => {
+    res.status(204).json({
+        status: 'success',
+        data: null,
+    });
+});
+
 const port = 3000;
 app.listen(port, () => {
     console.log(`Listening on port ${port}..`);
