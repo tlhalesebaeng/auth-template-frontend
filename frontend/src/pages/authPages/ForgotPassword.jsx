@@ -4,6 +4,7 @@ import Auth from '../../components/auth-components/Auth';
 import AlternativeAuth from '../../components/auth-components/AlternativeAuth';
 import Input from '../../utils/Input';
 import Button from '../../utils/Button';
+import { isValidEmail } from '../../validators';
 
 export default function ForgotPassword() {
     const navigate = useNavigate();
@@ -15,7 +16,7 @@ export default function ForgotPassword() {
     }
 
     let disabledButton = false;
-    if (!email) {
+    if (!email || !isValidEmail(email)) {
         disabledButton = true;
     }
 
