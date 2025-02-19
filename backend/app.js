@@ -11,11 +11,11 @@ const app = express();
 
 app.use(express.json()); //middleware to add the incoming body data to the request object
 
-app.get('/quiz/app/api/v1/users', getAllUsers);
-app.get('/quiz/app/api/v1/users/:id', getUser);
-app.post('/quiz/app/api/v1/users', createUser);
-app.patch('/quiz/app/api/v1/users/:id', updateUser);
-app.delete('/quiz/app/api/v1/users/:id', deleteUser);
+app.route('/quiz/app/api/v1/users').get(getAllUsers).post(createUser);
+app.route('/quiz/app/api/v1/users/:id')
+    .get(getUser)
+    .patch(updateUser)
+    .delete(deleteUser);
 
 const port = 3000;
 app.listen(port, () => {
