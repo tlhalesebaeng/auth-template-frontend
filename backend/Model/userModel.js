@@ -41,6 +41,9 @@ const userSchema = new mongoose.Schema({
             message: 'Passwords do not match',
         },
     },
+    passwordChangedAt: Date,
+    passwordResetCode: String,
+    passwordResetCodeExpires: Date,
 });
 
 userSchema.pre('save', async function (next) {
