@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import AlternativeAuth from '../../components/auth-components/AlternativeAuth';
 import Auth from '../../components/auth-components/Auth';
@@ -23,9 +24,20 @@ export default function Login() {
     }
 
     // Function to login the user
-    function handleLogin(event) {
+    async function handleLogin(event) {
         event.preventDefault();
-        navigate('/home');
+
+        const formData = new FormData(event.target);
+        const data = Object.fromEntries(formData.entries());
+        try {
+            const response = await axios.post(
+                'http://127.0.0.1:3000/quiz/app/api/v1/users/login',
+                data
+            );
+            console.log(response.data);
+        } catch (err) {
+            console.log(err.response.data);
+        }
     }
 
     let disabledButton = false;
@@ -37,7 +49,7 @@ export default function Login() {
 
     return (
         <Auth title="Login" description={description}>
-            <form>
+            <form onSubmit={handleLogin}>
                 <div className="input-container column">
                     <Input
                         onChange={(event) => {
@@ -45,6 +57,7 @@ export default function Login() {
                         }}
                         type="email"
                         placeholder="Email"
+                        name="email"
                     />
                     <Input
                         onChange={(event) => {
@@ -52,6 +65,7 @@ export default function Login() {
                         }}
                         type="password"
                         placeholder="Password"
+                        name="password"
                     />
                 </div>
                 <RememberMe type="Login" checkboxText="Remember me" />
@@ -60,12 +74,7 @@ export default function Login() {
                     option="Sign up"
                     name="question-container"
                 >
-                    <Button
-                        disabledButton={disabledButton}
-                        onClick={handleLogin}
-                    >
-                        Login
-                    </Button>
+                    <Button disabledButton={disabledButton}>Login</Button>
                 </AuthQuestion>
             </form>
             <AlternativeAuth action="Login" alt="Login" />
