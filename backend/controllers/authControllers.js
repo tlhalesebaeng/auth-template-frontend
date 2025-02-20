@@ -79,14 +79,20 @@ exports.forgotPassword = async (req, res) => {
         user.passwordResetCodeExpires = Date.now() + 10 * 60 * 1000;
         await user.save({ validateBeforeSave: false });
 
-        try {
-            const info = await sendEmail(email, code);
-            console.log('Email sent: ' + info.response);
-        } catch (err) {
-            user.passwordResetCode = undefined;
-            user.passwordResetCodeExpires = undefined;
-            await user.save({ validateBeforeSave: false });
-            throw new Error('Failed to send email! Please try again later.');
+        if (process.env.NODE_ENV === 'development') {
+            console.log('Code :', code);
+        } else {
+            try {
+                const info = await sendEmail(email, code);
+                console.log('Email sent: ' + info.response);
+            } catch (err) {
+                user.passwordResetCode = undefined;
+                user.passwordResetCodeExpires = undefined;
+                await user.save({ validateBeforeSave: false });
+                throw new Error(
+                    'Failed to send email! Please try again later.'
+                );
+            }
         }
 
         res.status(200).json({
