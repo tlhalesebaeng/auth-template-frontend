@@ -57,18 +57,12 @@ exports.login = async (req, res) => {
 exports.forgotPassword = async (req, res) => {
     try {
         const { email } = req.body;
-        if (!email) {
-            return res.status(400).json({
-                status: 'fail',
-                message: 'Please provide an email address',
-            });
-        }
 
         const user = await User.findOne({ email });
         if (!user) {
             return res.status(404).json({
                 status: 'fail',
-                message: 'No user with this email found',
+                message: 'No user with this email found!',
             });
         }
 
@@ -84,7 +78,7 @@ exports.forgotPassword = async (req, res) => {
             user.passwordResetCode = undefined;
             user.passwordResetCodeExpires = undefined;
             await user.save({ validateBeforeSave: false });
-            throw new Error('Failed to send email');
+            throw new Error('Failed to send email! Please try again later.');
         }
 
         res.status(200).json({
