@@ -18,7 +18,10 @@ const usersRoute = express.Router();
 
 // User routes
 usersRoute.route('/').get(protect, restrictTo('admin'), getAllUsers);
-usersRoute.route('/:id').patch(updateUser).delete(deleteUser);
+usersRoute
+    .route('/:id')
+    .patch(updateUser)
+    .delete(protect, restrictTo('admin'), deleteUser);
 
 // User authentication routes
 usersRoute.route('/signup').post(signup);
