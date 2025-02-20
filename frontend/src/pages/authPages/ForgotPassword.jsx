@@ -19,7 +19,7 @@ export default function ForgotPassword() {
 
         try {
             const response = await axios.post(
-                'http://127.0.0.1:3000/quiz/app/api/v1/users/pasword/reset',
+                'http://127.0.0.1:3000/quiz/app/api/v1/users/password/reset',
                 data
             );
             navigate('/users/password/reset/code');
