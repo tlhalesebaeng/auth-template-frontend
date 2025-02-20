@@ -60,6 +60,17 @@ userSchema.pre('save', async function (next) {
     next();
 });
 
+userSchema.pre('save', function (next) {
+    // Run this if the user is not new and the password was changed
+    if (!this.isModified('password') || this.isNew) return next();
+
+    // Set this property a second before to ensure we assign the token after changing the password
+    this.passwordChangedAt = Date.now() - 1000;
+
+    // Call the next middleware
+    next();
+});
+
 userSchema.methods.correctPassword = async function (
     candidatePassword,
     userPassword

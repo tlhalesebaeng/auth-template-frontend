@@ -92,3 +92,63 @@ exports.forgotPassword = async (req, res) => {
         });
     }
 };
+
+exports.verifyCode = async (req, res) => {
+    try {
+        const user = await User.findOne({
+            passwordResetCode: req.params.code,
+            passwordResetCodeExpires: { $gt: Date.now() },
+        });
+        if (!user) {
+            return res.status(400).json({
+                status: 'fail',
+                message: 'Code is invalid or has expired!',
+            });
+        }
+
+        res.status(200).json({
+            status: 'success',
+            message: 'Code verified!',
+        });
+    } catch (err) {
+        res.status(400).json({
+            status: 'fail',
+            message: err,
+        });
+    }
+};
+
+exports.resetPassword = async (req, res) => {
+    try {
+        const { password, passwordConfirm } = req.body;
+
+        const user = await User.findOne({
+            passwordResetCode: req.params.code,
+            passwordResetCodeExpires: { $gt: Date.now() },
+        });
+        if (!user) {
+            return res.status(400).json({
+                status: 'fail',
+                message: 'Code is invalid or has expired!',
+            });
+        }
+
+        user.password = password;
+        user.passwordConfirm = passwordConfirm;
+        user.passwordResetCode = undefined;
+        user.passwordResetCodeExpires = undefined;
+        await user.save({ validateBeforeSave: false });
+
+        const token = await assignToken(user._id);
+
+        res.status(200).json({
+            status: 'success',
+            token,
+        });
+    } catch (err) {
+        res.status(400).json({
+            status: 'fail',
+            message: err,
+        });
+    }
+};
