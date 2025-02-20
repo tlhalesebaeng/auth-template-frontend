@@ -8,6 +8,7 @@ export default function Input({
     type = 'text',
     placeholder,
     rightMargin,
+    name,
 }) {
     const [inputType, setInputType] = useState(type);
     const [inputLogo, setInputLogo] = useState(hiddenPassword);
@@ -40,7 +41,7 @@ export default function Input({
                 type={inputType}
                 placeholder=" "
                 autoComplete="on"
-                name={type}
+                name={name}
             />
             <label htmlFor="">{placeholder}</label>
             {type === 'password' && (
