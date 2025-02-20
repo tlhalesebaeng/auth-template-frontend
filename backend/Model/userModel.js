@@ -78,6 +78,22 @@ userSchema.methods.correctPassword = async function (
     return await bcrypt.compare(candidatePassword, userPassword);
 };
 
+userSchema.methods.passwordChanged = async function (jwtTimestamp) {
+    // Check if this property exists
+    if (this.passwordChangedAt) {
+        // Convert the database time to a comparable integer
+        const passwordTimestamp = parseInt(
+            this.passwordChangedAt.getTime() / 1000,
+            10
+        );
+
+        return jwtTimestamp < passwordTimestamp;
+    }
+
+    // Password not change i.e property does not exist
+    return false;
+};
+
 const User = mongoose.model('User', userSchema);
 
 module.exports = User;

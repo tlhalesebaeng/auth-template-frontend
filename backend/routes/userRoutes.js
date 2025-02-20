@@ -10,17 +10,21 @@ const {
     forgotPassword,
     verifyCode,
     resetPassword,
+    protect,
 } = require('../controllers/authControllers');
 
 const usersRoute = express.Router();
 
-usersRoute.route('/').get(getAllUsers);
+// User routes
+usersRoute.route('/').get(protect, getAllUsers);
+usersRoute.route('/:id').patch(updateUser).delete(deleteUser);
+
+// User authentication routes
 usersRoute.route('/signup').post(signup);
 usersRoute.route('/login').get(login);
 usersRoute.route('/pasword/reset').post(forgotPassword);
 usersRoute.route('/password/:code').get(verifyCode);
 usersRoute.route('/password/:code/new').patch(resetPassword);
 
-// usersRoute.route('/:id').patch(updateUser).delete(deleteUser);
-
+// Export the user route to use it as a middleware
 module.exports = usersRoute;

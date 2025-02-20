@@ -1,3 +1,4 @@
+const { promisify } = require('util');
 const jwt = require('jsonwebtoken');
 const randomstring = require('randomstring');
 const User = require('../Model/userModel');
@@ -156,6 +157,61 @@ exports.resetPassword = async (req, res) => {
         res.status(400).json({
             status: 'fail',
             message: err,
+        });
+    }
+};
+
+exports.protect = async (req, res, next) => {
+    try {
+        // Get the token
+        let token;
+        if (
+            req.headers.authorization &&
+            req.headers.authorization.startsWith('Bearer')
+        ) {
+            token = req.headers.authorization.split(' ')[1];
+        }
+
+        // Check if the token exists
+        if (!token) {
+            res.status(400).json({
+                status: 'fail',
+                message: 'You are not logged in! Please log in to continue.',
+            });
+        }
+
+        // Verify the token
+        const decodedToken = await promisify(jwt.verify)(
+            token,
+            process.env.JWT_SECRET
+        );
+
+        // Check if the user exists
+        const user = await User.findById(decodedToken.id);
+        if (!user) {
+            res.status(400).json({
+                status: 'fail',
+                message: 'The user with this token does not exist anymore',
+            });
+        }
+
+        // Ensure that the user did not change the password after the token was issued
+        if (await user.passwordChanged(decodedToken.iat)) {
+            return res.status(400).json({
+                status: 'fail',
+                message: 'Password recently changed! Please log in again.',
+            });
+        }
+
+        // Grant the user access to the protected route
+        req.user = user;
+
+        // Call the next middleware
+        next();
+    } catch (err) {
+        res.status(400).json({
+            status: 'fail',
+            message: 'You are not logged in! Please log in to continue.',
         });
     }
 };
