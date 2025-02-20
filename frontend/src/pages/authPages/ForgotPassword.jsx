@@ -9,21 +9,19 @@ import axios from 'axios';
 
 export default function ForgotPassword() {
     const navigate = useNavigate();
-    const [email, setEmail] = useState();
+    const [email, setEmail] = useState('');
 
     async function handleSubmitEmail(event) {
         event.preventDefault();
 
-        const formData = new FormData(event.target);
-        const data = Object.fromEntries(formData.entries());
-
         try {
+            const data = { email };
             const response = await axios.post(
-                'http://127.0.0.1:3000/quiz/app/api/v1/users/password/reset',
+                'http://127.0.0.1:3000/quiz/app/api/v1/users/pasword/reset',
                 data
             );
-            navigate('/users/password/reset/code');
             console.log(response.data);
+            navigate('/users/password/reset/code');
         } catch (err) {
             console.log(err.response.data);
         }
@@ -43,7 +41,7 @@ export default function ForgotPassword() {
             description={description}
             backTitle="Back to login"
         >
-            <form onSubmit={handleSubmitEmail}>
+            <form>
                 <div className="input-container column">
                     <Input
                         onChange={(event) => {
@@ -51,10 +49,14 @@ export default function ForgotPassword() {
                         }}
                         type="email"
                         placeholder="Email"
-                        name="email"
                     />
                 </div>
-                <Button disabledButton={disabledButton}>Submit</Button>
+                <Button
+                    disabledButton={disabledButton}
+                    onClick={handleSubmitEmail}
+                >
+                    Submit
+                </Button>
             </form>
             <AlternativeAuth alt="Login" />
         </Auth>

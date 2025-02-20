@@ -16,7 +16,7 @@ export default function CodeVerification() {
 
         try {
             const response = await axios.get(
-                'http://127.0.0.1:3000/quiz/app/api/v1/users/password/642267'
+                `http://127.0.0.1:3000/quiz/app/api/v1/users/password/${code}`
             );
             console.log(response.data);
         } catch (err) {

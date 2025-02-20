@@ -27,14 +27,13 @@ export default function Login() {
     async function handleLogin(event) {
         event.preventDefault();
 
-        const formData = new FormData(event.target);
-        const data = Object.fromEntries(formData.entries());
         try {
             const response = await axios.post(
                 'http://127.0.0.1:3000/quiz/app/api/v1/users/login',
                 data
             );
             console.log(response.data);
+            navigate('/home');
         } catch (err) {
             console.log(err.response.data);
         }
@@ -57,7 +56,6 @@ export default function Login() {
                         }}
                         type="email"
                         placeholder="Email"
-                        name="email"
                     />
                     <Input
                         onChange={(event) => {
@@ -65,7 +63,6 @@ export default function Login() {
                         }}
                         type="password"
                         placeholder="Password"
-                        name="password"
                     />
                 </div>
                 <RememberMe type="Login" checkboxText="Remember me" />

@@ -13,10 +13,6 @@ export default function Signup() {
     async function handleCreateAccount(event) {
         event.preventDefault();
 
-        // Get the data
-        const formData = new FormData(event.target);
-        const data = Object.fromEntries(formData.entries());
-
         try {
             const response = await axios.post(
                 'http://127.0.0.1:3000/quiz/app/api/v1/users/signup',
@@ -54,7 +50,7 @@ export default function Signup() {
 
     return (
         <Auth title="Sign up" description={description}>
-            <form onSubmit={handleCreateAccount}>
+            <form>
                 <div className="input-container column">
                     <div className="row">
                         <Input
@@ -64,7 +60,6 @@ export default function Signup() {
                             rightMargin="right-margin"
                             type="text"
                             placeholder="First Name"
-                            name="firstName"
                         />
                         <Input
                             onChange={(event) => {
@@ -72,7 +67,6 @@ export default function Signup() {
                             }}
                             type="text"
                             placeholder="Last Name"
-                            name="lastName"
                         />
                     </div>
                     <div className="row">
@@ -83,7 +77,6 @@ export default function Signup() {
                             rightMargin="right-margin"
                             type="text"
                             placeholder="Email"
-                            name="email"
                         />
                         <Input
                             onChange={(event) => {
@@ -91,7 +84,6 @@ export default function Signup() {
                             }}
                             type="text"
                             placeholder="Username"
-                            name="username"
                         />
                     </div>
                     <Input
@@ -100,15 +92,13 @@ export default function Signup() {
                         }}
                         type="password"
                         placeholder="Password"
-                        name="password"
                     />
                     <Input
                         onChange={(event) => {
-                            handleChange(event, 'confirmPassword');
+                            handleChange(event, 'passwordConfirm');
                         }}
                         type="password"
                         placeholder="Confirm Password"
-                        name="passwordConfirm"
                     />
                 </div>
                 <AuthQuestion
@@ -116,7 +106,10 @@ export default function Signup() {
                     option="Login"
                     name="question-container"
                 >
-                    <Button disabledButton={disabledButton}>
+                    <Button
+                        onClick={handleCreateAccount}
+                        disabledButton={disabledButton}
+                    >
                         Create account
                     </Button>
                 </AuthQuestion>

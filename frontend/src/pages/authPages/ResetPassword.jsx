@@ -12,12 +12,9 @@ export default function ResetPassword() {
     async function handleSetPassword(event) {
         event.preventDefault();
 
-        const formData = new FormData(event.target);
-        const data = Object.fromEntries(formData.entries());
-
         try {
             const response = await axios.patch(
-                'http://127.0.0.1:3000/quiz/app/api/v1/users/password/642267/new',
+                'http://127.0.0.1:3000/quiz/app/api/v1/users/password/479030/new',
                 data
             );
 
@@ -35,7 +32,7 @@ export default function ResetPassword() {
     }
 
     let disabledButton = false;
-    if (!data.newPassword || !data.confirmNewPassword) {
+    if (!data.password || !data.passwordConfirm) {
         disabledButton = true;
     }
 
@@ -43,26 +40,29 @@ export default function ResetPassword() {
 
     return (
         <Auth title="Set a new password" description={description}>
-            <form onSubmit={handleSetPassword}>
+            <form>
                 <div className="input-container column">
                     <Input
                         onChange={(event) => {
-                            handleChange(event, 'newPassword');
+                            handleChange(event, 'password');
                         }}
                         type="password"
                         placeholder="New Password"
-                        name="password"
                     />
                     <Input
                         onChange={(event) => {
-                            handleChange(event, 'confirmNewPassword');
+                            handleChange(event, 'passwordConfirm');
                         }}
                         type="password"
                         placeholder="Confirm New Password"
-                        name="passwordConfirm"
                     />
                 </div>
-                <Button disabledButton={disabledButton}>Set password</Button>
+                <Button
+                    onClick={handleSetPassword}
+                    disabledButton={disabledButton}
+                >
+                    Set password
+                </Button>
             </form>
         </Auth>
     );
