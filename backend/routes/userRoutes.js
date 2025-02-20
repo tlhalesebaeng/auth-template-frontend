@@ -21,7 +21,7 @@ usersRoute.route('/').get(protect, restrictTo('admin'), getAllUsers);
 
 // User authentication routes
 usersRoute.route('/signup').post(signup);
-usersRoute.route('/login').get(login);
+usersRoute.route('/login').post(login);
 usersRoute.route('/pasword/reset').post(forgotPassword);
 usersRoute.route('/password/:code').get(verifyCode);
 usersRoute.route('/password/:code/new').patch(resetPassword);
