@@ -4,13 +4,24 @@ import Auth from '../../components/auth-components/Auth';
 import AuthQuestion from '../../components/auth-components/AuthQuestion';
 import Input from '../../utils/Input';
 import Button from '../../utils/Button';
+import axios from 'axios';
 
 export default function CodeVerification() {
     const navigate = useNavigate();
     const [code, setCode] = useState();
 
-    function handleSubmitCode(event) {
+    async function handleSubmitCode(event) {
         event.preventDefault();
+        //642267
+
+        try {
+            const response = await axios.get(
+                'http://127.0.0.1:3000/quiz/app/api/v1/users/password/642267'
+            );
+            console.log(response.data);
+        } catch (err) {
+            console.log(err.response.data);
+        }
         navigate('/users/password/reset/entry');
     }
 
