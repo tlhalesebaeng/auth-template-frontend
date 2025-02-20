@@ -215,3 +215,18 @@ exports.protect = async (req, res, next) => {
         });
     }
 };
+
+exports.restrictTo = (...roles) => {
+    return (req, res, next) => {
+        // Check if the users role matches the one provided in the roles array
+        if (!roles.includes(req.user.role)) {
+            return res.status(403).json({
+                status: 'fail',
+                message:
+                    'You do not have the permission to perform this action.',
+            });
+        }
+        // Call the next middleware
+        next();
+    };
+};

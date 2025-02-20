@@ -11,12 +11,13 @@ const {
     verifyCode,
     resetPassword,
     protect,
+    restrictTo,
 } = require('../controllers/authControllers');
 
 const usersRoute = express.Router();
 
 // User routes
-usersRoute.route('/').get(protect, getAllUsers);
+usersRoute.route('/').get(protect, restrictTo('admin'), getAllUsers);
 usersRoute.route('/:id').patch(updateUser).delete(deleteUser);
 
 // User authentication routes
