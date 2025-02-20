@@ -21,7 +21,7 @@ export default function ForgotPassword() {
                 data
             );
             console.log(response.data);
-            navigate('/users/password/reset/code');
+            navigate('/users/password/reset/verify/code');
         } catch (err) {
             console.log(err.response.data);
         }

@@ -22,7 +22,7 @@ export default function CodeVerification() {
         } catch (err) {
             console.log(err.response.data);
         }
-        navigate('/users/password/reset/entry');
+        navigate(`/users/password/reset/${code}/new`);
     }
 
     let disabledButton = false;

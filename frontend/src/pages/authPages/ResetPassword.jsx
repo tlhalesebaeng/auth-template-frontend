@@ -1,11 +1,12 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Auth from '../../components/auth-components/Auth';
 import Button from '../../utils/Button';
 import Input from '../../utils/Input';
 import axios from 'axios';
 
 export default function ResetPassword() {
+    const { code } = useParams();
     const navigate = useNavigate();
     const [data, setData] = useState({});
 
@@ -14,7 +15,7 @@ export default function ResetPassword() {
 
         try {
             const response = await axios.patch(
-                'http://127.0.0.1:3000/quiz/app/api/v1/users/password/479030/new',
+                `http://127.0.0.1:3000/quiz/app/api/v1/users/password/${code}/new`,
                 data
             );
 
