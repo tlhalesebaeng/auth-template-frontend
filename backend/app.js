@@ -1,9 +1,12 @@
 const express = require('express');
 const morgan = require('morgan');
 const dotenv = require('dotenv');
+const cors = require('cors');
 const usersRoute = require('./routes/userRoutes');
 
 const app = express();
+
+app.use(cors()); // Middleware that allows us to access this from other domains
 
 dotenv.config({ path: './config.env' });
 
