@@ -5,14 +5,28 @@ import AlternativeAuth from '../../components/auth-components/AlternativeAuth';
 import Input from '../../utils/Input';
 import Button from '../../utils/Button';
 import { isValidEmail } from '../../validators';
+import axios from 'axios';
 
 export default function ForgotPassword() {
     const navigate = useNavigate();
     const [email, setEmail] = useState();
 
-    function handleSubmitEmail(event) {
+    async function handleSubmitEmail(event) {
         event.preventDefault();
-        navigate('/users/password/reset/code');
+
+        const formData = new FormData(event.target);
+        const data = Object.fromEntries(formData.entries());
+
+        try {
+            const response = await axios.post(
+                'http://127.0.0.1:3000/quiz/app/api/v1/users/pasword/reset',
+                data
+            );
+            navigate('/users/password/reset/code');
+            console.log(response.data);
+        } catch (err) {
+            console.log(err.response.data);
+        }
     }
 
     let disabledButton = false;
@@ -29,7 +43,7 @@ export default function ForgotPassword() {
             description={description}
             backTitle="Back to login"
         >
-            <form>
+            <form onSubmit={handleSubmitEmail}>
                 <div className="input-container column">
                     <Input
                         onChange={(event) => {
@@ -37,14 +51,10 @@ export default function ForgotPassword() {
                         }}
                         type="email"
                         placeholder="Email"
+                        name="email"
                     />
                 </div>
-                <Button
-                    disabledButton={disabledButton}
-                    onClick={handleSubmitEmail}
-                >
-                    Submit
-                </Button>
+                <Button disabledButton={disabledButton}>Submit</Button>
             </form>
             <AlternativeAuth alt="Login" />
         </Auth>
