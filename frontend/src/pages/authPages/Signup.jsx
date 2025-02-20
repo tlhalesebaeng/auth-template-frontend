@@ -40,7 +40,7 @@ export default function Signup() {
         !data.email ||
         !data.username ||
         !data.password ||
-        !data.confirmPassword ||
+        !data.passwordConfirm ||
         !isValidEmail(data.email)
     ) {
         disabledButton = true;
