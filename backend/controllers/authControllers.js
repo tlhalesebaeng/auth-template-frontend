@@ -10,7 +10,14 @@ const assignToken = async (id) => {
 };
 exports.signup = async (req, res) => {
     try {
-        const newUser = await User.create(req.body);
+        const newUser = await User.create({
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            username: req.body.username,
+            email: req.body.email,
+            password: req.body.password,
+            passwordConfirm: req.body.passwordConfirm,
+        });
         const token = await assignToken(newUser._id);
 
         res.status(201).json({
