@@ -174,7 +174,7 @@ exports.protect = async (req, res, next) => {
 
         // Check if the token exists
         if (!token) {
-            res.status(400).json({
+            res.status(401).json({
                 status: 'fail',
                 message: 'You are not logged in! Please log in to continue.',
             });
@@ -189,7 +189,7 @@ exports.protect = async (req, res, next) => {
         // Check if the user exists
         const user = await User.findById(decodedToken.id);
         if (!user) {
-            res.status(400).json({
+            res.status(401).json({
                 status: 'fail',
                 message: 'The user with this token does not exist anymore',
             });
@@ -197,7 +197,7 @@ exports.protect = async (req, res, next) => {
 
         // Ensure that the user did not change the password after the token was issued
         if (await user.passwordChanged(decodedToken.iat)) {
-            return res.status(400).json({
+            return res.status(401).json({
                 status: 'fail',
                 message: 'Password recently changed! Please log in again.',
             });
@@ -209,7 +209,7 @@ exports.protect = async (req, res, next) => {
         // Call the next middleware
         next();
     } catch (err) {
-        res.status(400).json({
+        res.status(401).json({
             status: 'fail',
             message: 'You are not logged in! Please log in to continue.',
         });
