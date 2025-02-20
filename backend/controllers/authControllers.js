@@ -30,13 +30,6 @@ exports.login = async (req, res) => {
     try {
         const { email, password } = req.body;
 
-        if (!email || !password) {
-            return res.status(400).json({
-                status: 'fail',
-                message: 'Please provide an email and password',
-            });
-        }
-
         const user = await User.findOne({ email });
         const correct = await user.correctPassword(password, user.password);
 
