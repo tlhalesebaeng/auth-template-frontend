@@ -39,10 +39,16 @@ exports.login = async (req, res) => {
         const { email, password } = req.body;
 
         const user = await User.findOne({ email });
+        if (!user) {
+            return res.status(400).json({
+                status: 'fail',
+                message: 'Incorrect email or password',
+            });
+        }
         const correct = await user.correctPassword(password, user.password);
 
-        if (!user || !correct) {
-            return res.status(404).json({
+        if (!correct) {
+            return res.status(400).json({
                 status: 'fail',
                 message: 'Incorrect email or password',
             });
@@ -55,6 +61,7 @@ exports.login = async (req, res) => {
             token,
         });
     } catch (err) {
+        console.log(err);
         res.status(404).json({
             status: 'fail',
             message: err,
