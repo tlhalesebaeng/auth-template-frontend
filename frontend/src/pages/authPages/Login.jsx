@@ -8,10 +8,12 @@ import RememberMe from '../../components/auth-components/RememberMe';
 import Button from '../../utils/Button';
 import Input from '../../utils/Input';
 import { isValidEmail } from '../../validators';
+import Error from '../../components/Error';
 
 export default function Login() {
     const navigate = useNavigate();
     const [data, setData] = useState({}); //This will cause the whole component to reload and cause some performance implications
+    const [error, setError] = useState('');
 
     //will use this function in many places, so create your own hook to handle this
     function handleChange(event, type) {
@@ -35,7 +37,12 @@ export default function Login() {
             console.log(response.data);
             navigate('/home');
         } catch (err) {
-            console.log(err.response.data);
+            const responseData = err.response.data;
+            if (responseData) {
+                setError(responseData.message);
+            } else {
+                setError('Could not process login request');
+            }
         }
     }
 
@@ -48,7 +55,7 @@ export default function Login() {
 
     return (
         <Auth title="Login" description={description}>
-            <form onSubmit={handleLogin}>
+            <form>
                 <div className="input-container column">
                     <Input
                         onChange={(event) => {
@@ -71,7 +78,13 @@ export default function Login() {
                     option="Sign up"
                     name="question-container"
                 >
-                    <Button disabledButton={disabledButton}>Login</Button>
+                    {error && <Error errorMessage={error} />}
+                    <Button
+                        onClick={handleLogin}
+                        disabledButton={disabledButton}
+                    >
+                        Login
+                    </Button>
                 </AuthQuestion>
             </form>
             <AlternativeAuth action="Login" alt="Login" />

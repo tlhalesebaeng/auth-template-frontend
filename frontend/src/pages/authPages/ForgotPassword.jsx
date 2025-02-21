@@ -6,10 +6,12 @@ import Input from '../../utils/Input';
 import Button from '../../utils/Button';
 import { isValidEmail } from '../../validators';
 import axios from 'axios';
+import Error from '../../components/Error';
 
 export default function ForgotPassword() {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
+    const [error, setError] = useState('');
 
     async function handleSubmitEmail(event) {
         event.preventDefault();
@@ -23,7 +25,12 @@ export default function ForgotPassword() {
             console.log(response.data);
             navigate('/users/password/reset/verify/code');
         } catch (err) {
-            console.log(err.response.data);
+            const responseData = err.response.data;
+            if (responseData) {
+                setError(responseData.message);
+            } else {
+                setError('Could not process login request');
+            }
         }
     }
 
@@ -51,6 +58,7 @@ export default function ForgotPassword() {
                         placeholder="Email"
                     />
                 </div>
+                {error && <Error errorMessage={error} />}
                 <Button
                     disabledButton={disabledButton}
                     onClick={handleSubmitEmail}

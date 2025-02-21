@@ -1,3 +1,5 @@
-export default function Error() {
-    return <h1>Error</h1>;
+import './Error.css';
+
+export default function Error({ errorMessage }) {
+    return <p className="error">{errorMessage}</p>;
 }

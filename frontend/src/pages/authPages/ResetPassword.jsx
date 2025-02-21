@@ -4,11 +4,13 @@ import Auth from '../../components/auth-components/Auth';
 import Button from '../../utils/Button';
 import Input from '../../utils/Input';
 import axios from 'axios';
+import Error from '../../components/Error';
 
 export default function ResetPassword() {
     const { code } = useParams();
     const navigate = useNavigate();
     const [data, setData] = useState({});
+    const [error, setError] = useState('');
 
     async function handleSetPassword(event) {
         event.preventDefault();
@@ -22,7 +24,12 @@ export default function ResetPassword() {
             console.log(response.data);
             navigate('/home');
         } catch (err) {
-            console.log(err.response.data);
+            const responseData = err.response.data;
+            if (responseData) {
+                setError(responseData.message);
+            } else {
+                setError('Could not process login request');
+            }
         }
     }
 
@@ -58,6 +65,7 @@ export default function ResetPassword() {
                         placeholder="Confirm New Password"
                     />
                 </div>
+                {error && <Error errorMessage={error} />}
                 <Button
                     onClick={handleSetPassword}
                     disabledButton={disabledButton}

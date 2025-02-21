@@ -6,9 +6,13 @@ import AuthQuestion from '../../components/auth-components/AuthQuestion';
 import Button from '../../utils/Button';
 import Input from '../../utils/Input';
 import { isValidEmail } from '../../validators';
+import { useNavigate } from 'react-router-dom';
+import Error from '../../components/Error';
 
 export default function Signup() {
+    const navigate = useNavigate();
     const [data, setData] = useState({});
+    const [error, setError] = useState('');
 
     async function handleCreateAccount(event) {
         event.preventDefault();
@@ -19,8 +23,14 @@ export default function Signup() {
                 data
             );
             console.log(response.data);
+            navigate('/home');
         } catch (err) {
-            console.log(err.response.data);
+            const responseData = err.response.data;
+            if (responseData) {
+                setError(responseData.message);
+            } else {
+                setError('Could not process login request');
+            }
         }
     }
 
@@ -110,6 +120,7 @@ export default function Signup() {
                         onClick={handleCreateAccount}
                         disabledButton={disabledButton}
                     >
+                        {error && <Error errorMessage={error} />}
                         Create account
                     </Button>
                 </AuthQuestion>
