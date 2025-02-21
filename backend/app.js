@@ -17,10 +17,21 @@ app.use(express.json()); //middleware to add the incoming body data to the reque
 
 app.use('/quiz/app/api/v1/users', usersRoute);
 
-app.use('*', (req, res) => {
-    res.status(404).json({
-        status: 'fail',
-        message: `Could not find ${req.originalUrl} on this server!`,
+app.use('*', (req, res, next) => {
+    const err = new Error(`Cannot find ${req.originalUrl} on this server!`);
+    err.statusCode = 404;
+    err.status = 'fail';
+
+    next(err);
+});
+
+app.use((err, req, res, next) => {
+    err.statusCode = err.statusCode || 500;
+    err.status = err.status || 'error';
+
+    res.status(err.statusCode).json({
+        status: err.status,
+        message: err.message,
     });
 });
 
