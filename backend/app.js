@@ -17,4 +17,11 @@ app.use(express.json()); //middleware to add the incoming body data to the reque
 
 app.use('/quiz/app/api/v1/users', usersRoute);
 
+app.use('*', (req, res) => {
+    res.status(404).json({
+        status: 'fail',
+        message: `Could not find ${req.originalUrl} on this server!`,
+    });
+});
+
 module.exports = app;
