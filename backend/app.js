@@ -6,7 +6,12 @@ const usersRoute = require('./routes/userRoutes');
 
 const app = express();
 
-app.use(cors()); // Middleware that allows us to access this from other domains
+app.use(
+    cors({
+        origin: 'http://localhost:5173',
+        credentials: true,
+    })
+); // Middleware that allows us to access this from other domains
 
 dotenv.config({ path: './config.env' });
 
