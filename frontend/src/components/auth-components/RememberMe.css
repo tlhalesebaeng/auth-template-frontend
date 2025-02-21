@@ -1,11 +1,12 @@
 .remeber-me-container {
+    margin-bottom: 10px;
     justify-content: space-between;
     align-items: center;
 }
 
 .remeber-me-container a {
     font-size: 13px;
-    color: #ff8682;
+    color: #3869eb;
     text-decoration: none;
 }
 
@@ -24,4 +25,8 @@
 .remeber-me-container div p {
     font-size: 13px;
     margin-left: 5px;
+}
+
+.remeber-me-container div input {
+    margin: 0;
 }
