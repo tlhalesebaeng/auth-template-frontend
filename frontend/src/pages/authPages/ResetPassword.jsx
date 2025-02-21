@@ -65,13 +65,13 @@ export default function ResetPassword() {
                         placeholder="Confirm New Password"
                     />
                 </div>
-                {error && <Error errorMessage={error} />}
                 <Button
                     onClick={handleSetPassword}
                     disabledButton={disabledButton}
                 >
                     Set password
                 </Button>
+                {error && <Error biggerMargin={true} errorMessage={error} />}
             </form>
         </Auth>
     );

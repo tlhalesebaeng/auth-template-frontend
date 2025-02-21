@@ -60,13 +60,13 @@ export default function CodeVerification() {
                     option="Resend"
                     name="other-question-container"
                 ></AuthQuestion>
-                {error && <Error errorMessage={error} />}
                 <Button
                     disabledButton={disabledButton}
                     onClick={handleSubmitCode}
                 >
                     Submit
                 </Button>
+                {error && <Error biggerMargin={true} errorMessage={error} />}
             </form>
         </Auth>
     );

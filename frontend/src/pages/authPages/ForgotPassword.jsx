@@ -58,13 +58,13 @@ export default function ForgotPassword() {
                         placeholder="Email"
                     />
                 </div>
-                {error && <Error errorMessage={error} />}
                 <Button
                     disabledButton={disabledButton}
                     onClick={handleSubmitEmail}
                 >
                     Submit
                 </Button>
+                {error && <Error errorMessage={error} />}
             </form>
             <AlternativeAuth alt="Login" />
         </Auth>
