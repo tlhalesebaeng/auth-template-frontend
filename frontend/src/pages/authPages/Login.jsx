@@ -38,7 +38,7 @@ export default function Login() {
                 data
             );
 
-            if (response.data) {
+            if (response.status === 200) {
                 // Get the token
                 const token = response.data.token;
 
@@ -50,10 +50,10 @@ export default function Login() {
                 cookies.set('jwt', token, {
                     expires: new Date(decoded.exp * 1000),
                 });
-            }
 
-            // Navigate to the home page
-            navigate('/home');
+                // Navigate to the home page
+                navigate('/home');
+            }
         } catch (err) {
             const responseData = err.response.data;
             if (responseData) {
