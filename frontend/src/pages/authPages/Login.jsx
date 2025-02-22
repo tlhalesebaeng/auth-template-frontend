@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import Cookie from 'cookie-universal';
+import { jwtDecode } from 'jwt-decode';
 import AlternativeAuth from '../../components/auth-components/AlternativeAuth';
 import Auth from '../../components/auth-components/Auth';
 import AuthQuestion from '../../components/auth-components/AuthQuestion';
@@ -30,11 +32,27 @@ export default function Login() {
         event.preventDefault();
 
         try {
+            // Make the request
             const response = await axios.post(
                 'http://127.0.0.1:3000/quiz/app/api/v1/users/login',
                 data
             );
-            console.log(response.data);
+
+            if (response.data) {
+                // Get the token
+                const token = response.data.token;
+
+                // Decode the token
+                const decoded = jwtDecode(token);
+
+                // Set the token as a cookie
+                const cookies = Cookie();
+                cookies.set('jwt', token, {
+                    expires: new Date(decoded.exp * 1000),
+                });
+            }
+
+            // Navigate to the home page
             navigate('/home');
         } catch (err) {
             const responseData = err.response.data;
