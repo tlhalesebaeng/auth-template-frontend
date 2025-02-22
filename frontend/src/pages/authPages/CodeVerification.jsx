@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import Auth from '../../components/auth-components/Auth';
 import AuthQuestion from '../../components/auth-components/AuthQuestion';
@@ -9,12 +9,12 @@ import Error from '../../components/Error';
 
 export default function CodeVerification() {
     const navigate = useNavigate();
+    const location = useLocation();
     const [code, setCode] = useState();
     const [error, setError] = useState('');
 
     async function handleSubmitCode(event) {
         event.preventDefault();
-        //642267
 
         try {
             const response = await axios.get(
@@ -22,6 +22,25 @@ export default function CodeVerification() {
             );
             console.log(response.data);
             navigate(`/users/password/reset/${code}/new`);
+        } catch (err) {
+            const responseData = err.response.data;
+            if (responseData) {
+                setError(responseData.message);
+            } else {
+                setError('Could not process login request');
+            }
+        }
+    }
+
+    async function handleResendCode(event) {
+        event.preventDefault();
+
+        try {
+            const data = { email: location.state.email };
+            const response = await axios.post(
+                'http://127.0.0.1:3000/quiz/app/api/v1/users/pasword/reset',
+                data
+            );
         } catch (err) {
             const responseData = err.response.data;
             if (responseData) {
@@ -59,6 +78,7 @@ export default function CodeVerification() {
                     question="Didn't receive the code?"
                     option="Resend"
                     name="other-question-container"
+                    onClickOption={handleResendCode}
                 ></AuthQuestion>
                 <Button
                     disabledButton={disabledButton}

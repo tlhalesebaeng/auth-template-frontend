@@ -22,8 +22,9 @@ export default function ForgotPassword() {
                 'http://127.0.0.1:3000/quiz/app/api/v1/users/pasword/reset',
                 data
             );
-            console.log(response.data);
-            navigate('/users/password/reset/verify/code');
+            navigate('/users/password/reset/verify/code', {
+                state: { email },
+            });
         } catch (err) {
             const responseData = err.response.data;
             if (responseData) {

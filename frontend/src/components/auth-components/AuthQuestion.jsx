@@ -1,7 +1,13 @@
 import { NavLink } from 'react-router-dom';
 import './AuthQuestion.css';
 
-export default function AuthQuestion({ children, question, option, name }) {
+export default function AuthQuestion({
+    children,
+    question,
+    option,
+    name,
+    onClickOption,
+}) {
     let optionUrl;
     if (option === 'Login') {
         optionUrl = '/';
@@ -15,7 +21,10 @@ export default function AuthQuestion({ children, question, option, name }) {
         <div className={`${name} column`}>
             {children}
             <p>
-                {question} <NavLink to={optionUrl}>{option}</NavLink>
+                {question}{' '}
+                <NavLink onClick={onClickOption} to={optionUrl}>
+                    {option}
+                </NavLink>
             </p>
         </div>
     );
