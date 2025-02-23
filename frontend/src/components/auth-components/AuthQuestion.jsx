@@ -13,8 +13,6 @@ export default function AuthQuestion({
         optionUrl = '/';
     } else if (option === 'Sign up') {
         optionUrl = '/users/signup';
-    } else if (option === 'Resend') {
-        //resend the code
     }
 
     return (

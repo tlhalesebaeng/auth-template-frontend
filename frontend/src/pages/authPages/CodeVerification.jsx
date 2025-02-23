@@ -7,11 +7,15 @@ import Input from '../../utils/Input';
 import Button from '../../utils/Button';
 import Error from '../../components/Error';
 
+const resendInterval = 20;
+
 export default function CodeVerification() {
     const navigate = useNavigate();
     const location = useLocation();
     const [code, setCode] = useState();
     const [error, setError] = useState('');
+    const [codeResent, setCodeResent] = useState(false);
+    const [resendTime, setResendTime] = useState(resendInterval); //This will cause a lot of rendering of this component, so fix it
 
     async function handleSubmitCode(event) {
         event.preventDefault();
@@ -20,7 +24,6 @@ export default function CodeVerification() {
             const response = await axios.get(
                 `http://127.0.0.1:3000/quiz/app/api/v1/users/password/${code}`
             );
-            console.log(response.data);
             navigate(`/users/password/reset/${code}/new`);
         } catch (err) {
             const responseData = err.response.data;
@@ -41,6 +44,18 @@ export default function CodeVerification() {
                 'http://127.0.0.1:3000/quiz/app/api/v1/users/pasword/reset',
                 data
             );
+            setCodeResent(true);
+            const time = setInterval(() => {
+                setResendTime((prevTime) => {
+                    const newTime = prevTime - 1;
+                    return newTime;
+                });
+            }, 1000);
+            setTimeout(() => {
+                setCodeResent(false);
+                setResendTime(resendInterval);
+                clearInterval(time);
+            }, resendInterval * 1000);
         } catch (err) {
             const responseData = err.response.data;
             if (responseData) {
@@ -75,8 +90,12 @@ export default function CodeVerification() {
                     />
                 </div>
                 <AuthQuestion
-                    question="Didn't receive the code?"
-                    option="Resend"
+                    question={
+                        codeResent
+                            ? `You can resend after: ${resendTime} seconds`
+                            : "Didn't receive the code?"
+                    }
+                    option={codeResent ? '' : 'Resend'}
                     name="other-question-container"
                     onClickOption={handleResendCode}
                 ></AuthQuestion>
