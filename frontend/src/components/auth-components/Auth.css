@@ -19,3 +19,25 @@
     color: rgba(49, 49, 49, 0.75);
     margin-bottom: 20px;
 }
+
+/* Responsiveness */
+
+@media (max-width: 500px) {
+    .auth-card {
+        padding: 25px;
+    }
+}
+
+@media (max-width: 410px) {
+    .auth-card {
+        border: none;
+    }
+
+    .auth-card h1 {
+        font-size: 18px;
+    }
+
+    .description {
+        font-size: 10px;
+    }
+}

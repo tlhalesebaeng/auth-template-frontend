@@ -44,3 +44,26 @@
 .input-group img:hover {
     cursor: pointer;
 }
+
+/* Responsiveness */
+
+@media (max-width: 410px) {
+    .input-group input {
+        height: 25px;
+        font-size: 10px;
+    }
+
+    .input-group label {
+        font-size: 10px;
+    }
+
+    .input-group img {
+        height: 10px;
+    }
+
+    .input-group input:focus + label,
+    .input-group input:not(:placeholder-shown) + label {
+        top: -8px;
+        left: 5px;
+    }
+}

@@ -30,3 +30,15 @@
 .remeber-me-container div input {
     margin: 0;
 }
+
+/* Responsiveness */
+
+@media (max-width: 410px) {
+    .remeber-me-container a {
+        font-size: 10px;
+    }
+
+    .remeber-me-container div p {
+        font-size: 10px;
+    }
+}

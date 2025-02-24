@@ -7,6 +7,7 @@
     font-size: 13px;
     margin: 5px 0px;
 }
+
 .other-question-container p a,
 .question-container p a {
     font-size: 13px;
@@ -19,4 +20,18 @@
     text-decoration: underline;
     text-decoration-thickness: 1px;
     text-underline-offset: 2px;
+}
+
+/* Responsiveness */
+
+@media (max-width: 410px) {
+    .other-question-container,
+    .question-container p {
+        font-size: 10px;
+    }
+
+    .other-question-container p a,
+    .question-container p a {
+        font-size: 10px;
+    }
 }
