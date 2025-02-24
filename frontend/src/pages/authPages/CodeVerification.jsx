@@ -22,7 +22,9 @@ export default function CodeVerification() {
 
         try {
             const response = await axios.get(
-                `http://127.0.0.1:3000/quiz/app/api/v1/users/password/${code}`
+                `${
+                    import.meta.env.VITE_BACKEND_BASEURL
+                }/quiz/app/api/v1/users/password/${code}`
             );
             navigate(`/users/password/reset/${code}/new`);
         } catch (err) {
@@ -41,7 +43,7 @@ export default function CodeVerification() {
         try {
             const data = { email: location.state.email };
             const response = await axios.post(
-                'http://127.0.0.1:3000/quiz/app/api/v1/users/pasword/reset',
+                `/quiz/app/api/v1/users/pasword/reset`,
                 data
             );
             setCodeResent(true);

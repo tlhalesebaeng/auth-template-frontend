@@ -17,7 +17,9 @@ export default function ResetPassword() {
 
         try {
             const response = await axios.patch(
-                `http://127.0.0.1:3000/quiz/app/api/v1/users/password/${code}/new`,
+                `${
+                    import.meta.env.VITE_BACKEND_BASEURL
+                }/quiz/app/api/v1/users/password/${code}/new`,
                 data
             );
 

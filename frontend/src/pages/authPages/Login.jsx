@@ -34,7 +34,9 @@ export default function Login() {
         try {
             // Make the request
             const response = await axios.post(
-                'http://127.0.0.1:3000/quiz/app/api/v1/users/login',
+                `${
+                    import.meta.env.VITE_BACKEND_BASEURL
+                }/quiz/app/api/v1/users/login`,
                 data
             );
 
