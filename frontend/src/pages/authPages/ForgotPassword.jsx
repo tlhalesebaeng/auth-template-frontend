@@ -24,9 +24,21 @@ export default function ForgotPassword() {
                 }/quiz/app/api/v1/users/pasword/reset`,
                 data
             );
-            navigate('/users/password/reset/verify/code', {
-                state: { email },
-            });
+
+            if (import.meta.env.VITE_ENVIRONMENT === 'production') {
+                setError(
+                    'This app is under development. Please contact the administrator for the verification code.'
+                );
+                setTimeout(() => {
+                    navigate('/users/password/reset/verify/code', {
+                        state: { email },
+                    });
+                }, 10000);
+            } else {
+                navigate('/users/password/reset/verify/code', {
+                    state: { email },
+                });
+            }
         } catch (err) {
             const responseData = err.response.data;
             if (responseData) {
