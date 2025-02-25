@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import axios from 'axios';
 import AlternativeAuth from '../../components/auth-components/AlternativeAuth';
 import Auth from '../../components/auth-components/Auth';
 import AuthQuestion from '../../components/auth-components/AuthQuestion';
@@ -8,6 +7,7 @@ import Input from '../../utils/Input';
 import { isValidEmail } from '../../validators';
 import { useNavigate } from 'react-router-dom';
 import Error from '../../components/Error';
+import api from '../../fetchFn';
 
 export default function Signup() {
     const navigate = useNavigate();
@@ -18,10 +18,8 @@ export default function Signup() {
         event.preventDefault();
 
         try {
-            const response = await axios.post(
-                `${
-                    import.meta.env.VITE_BACKEND_BASEURL
-                }/quiz/app/api/v1/users/signup`,
+            const response = await api.post(
+                '/quiz/app/api/v1/users/signup',
                 data
             );
             console.log(response.data);

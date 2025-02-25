@@ -6,6 +6,7 @@ import AuthQuestion from '../../components/auth-components/AuthQuestion';
 import Input from '../../utils/Input';
 import Button from '../../utils/Button';
 import Error from '../../components/Error';
+import api from '../../fetchFn';
 
 const resendInterval = 20;
 
@@ -21,10 +22,8 @@ export default function CodeVerification() {
         event.preventDefault();
 
         try {
-            const response = await axios.get(
-                `${
-                    import.meta.env.VITE_BACKEND_BASEURL
-                }/quiz/app/api/v1/users/password/${code}`
+            const response = await api.get(
+                `/quiz/app/api/v1/users/password/${code}`
             );
             navigate(`/users/password/reset/${code}/new`);
         } catch (err) {
@@ -42,8 +41,8 @@ export default function CodeVerification() {
 
         try {
             const data = { email: location.state.email };
-            const response = await axios.post(
-                `/quiz/app/api/v1/users/pasword/reset`,
+            const response = await api.post(
+                '/quiz/app/api/v1/users/pasword/reset',
                 data
             );
             setCodeResent(true);

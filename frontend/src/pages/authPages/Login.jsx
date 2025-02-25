@@ -11,6 +11,7 @@ import Button from '../../utils/Button';
 import Input from '../../utils/Input';
 import { isValidEmail } from '../../validators';
 import Error from '../../components/Error';
+import api from '../../fetchFn';
 
 export default function Login() {
     const navigate = useNavigate();
@@ -33,10 +34,8 @@ export default function Login() {
 
         try {
             // Make the request
-            const response = await axios.post(
-                `${
-                    import.meta.env.VITE_BACKEND_BASEURL
-                }/quiz/app/api/v1/users/login`,
+            const response = await api.post(
+                '/quiz/app/api/v1/users/login',
                 data
             );
 

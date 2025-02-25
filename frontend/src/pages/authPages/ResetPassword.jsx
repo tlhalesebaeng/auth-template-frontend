@@ -3,8 +3,8 @@ import { useNavigate, useParams } from 'react-router-dom';
 import Auth from '../../components/auth-components/Auth';
 import Button from '../../utils/Button';
 import Input from '../../utils/Input';
-import axios from 'axios';
 import Error from '../../components/Error';
+import api from '../../fetchFn';
 
 export default function ResetPassword() {
     const { code } = useParams();
@@ -16,14 +16,11 @@ export default function ResetPassword() {
         event.preventDefault();
 
         try {
-            const response = await axios.patch(
-                `${
-                    import.meta.env.VITE_BACKEND_BASEURL
-                }/quiz/app/api/v1/users/password/${code}/new`,
+            const response = await api.patch(
+                '/quiz/app/api/v1/users/password/${code}/new',
                 data
             );
 
-            console.log(response.data);
             navigate('/home');
         } catch (err) {
             const responseData = err.response.data;

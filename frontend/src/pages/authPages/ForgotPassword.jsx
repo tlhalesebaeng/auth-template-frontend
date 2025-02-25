@@ -5,8 +5,8 @@ import AlternativeAuth from '../../components/auth-components/AlternativeAuth';
 import Input from '../../utils/Input';
 import Button from '../../utils/Button';
 import { isValidEmail } from '../../validators';
-import axios from 'axios';
 import Error from '../../components/Error';
+import api from '../../fetchFn';
 
 export default function ForgotPassword() {
     const navigate = useNavigate();
@@ -18,10 +18,8 @@ export default function ForgotPassword() {
 
         try {
             const data = { email };
-            const response = await axios.post(
-                `${
-                    import.meta.env.VITE_BACKEND_BASEURL
-                }/quiz/app/api/v1/users/pasword/reset`,
+            const response = await api.post(
+                '/quiz/app/api/v1/users/pasword/reset',
                 data
             );
 
