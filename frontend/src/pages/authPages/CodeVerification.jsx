@@ -6,7 +6,7 @@ import AuthQuestion from '../../components/auth-components/AuthQuestion';
 import Input from '../../utils/Input';
 import Button from '../../utils/Button';
 import Error from '../../components/Error';
-import api from '../../fetchFn';
+import api from '../../requestInstance';
 
 const resendInterval = 20;
 

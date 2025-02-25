@@ -6,7 +6,7 @@ import Input from '../../utils/Input';
 import Button from '../../utils/Button';
 import { isValidEmail } from '../../validators';
 import Error from '../../components/Error';
-import api from '../../fetchFn';
+import api from '../../requestInstance';
 
 export default function ForgotPassword() {
     const navigate = useNavigate();

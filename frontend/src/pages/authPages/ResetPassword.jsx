@@ -4,7 +4,7 @@ import Auth from '../../components/auth-components/Auth';
 import Button from '../../utils/Button';
 import Input from '../../utils/Input';
 import Error from '../../components/Error';
-import api from '../../fetchFn';
+import api from '../../requestInstance';
 
 export default function ResetPassword() {
     const { code } = useParams();

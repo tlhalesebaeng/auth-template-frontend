@@ -7,7 +7,7 @@ import Input from '../../utils/Input';
 import { isValidEmail } from '../../validators';
 import { useNavigate } from 'react-router-dom';
 import Error from '../../components/Error';
-import api from '../../fetchFn';
+import api from '../../requestInstance';
 
 export default function Signup() {
     const navigate = useNavigate();

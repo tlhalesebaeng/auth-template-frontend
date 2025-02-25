@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Cookie from 'cookie-universal';
 import { jwtDecode } from 'jwt-decode';
@@ -11,12 +10,12 @@ import Button from '../../utils/Button';
 import Input from '../../utils/Input';
 import { isValidEmail } from '../../validators';
 import Error from '../../components/Error';
-import api from '../../fetchFn';
+import { useFetch } from '../../hooks/useFetch';
 
 export default function Login() {
     const navigate = useNavigate();
     const [data, setData] = useState({}); //This will cause the whole component to reload and cause some performance implications
-    const [error, setError] = useState('');
+    const { error, res } = useFetch();
 
     //will use this function in many places, so create your own hook to handle this
     function handleChange(event, type) {
@@ -32,36 +31,27 @@ export default function Login() {
     async function handleLogin(event) {
         event.preventDefault();
 
-        try {
-            // Make the request
-            const response = await api.post(
-                '/quiz/app/api/v1/users/login',
-                data
-            );
+        const response = await res(
+            '/quiz/app/api/v1/users/login',
+            data,
+            'post'
+        );
 
-            if (response.status === 200) {
-                // Get the token
-                const token = response.data.token;
+        if (response.status === 200) {
+            // Get the token
+            const token = response.data.token;
 
-                // Decode the token
-                const decoded = jwtDecode(token);
+            // Decode the token
+            const decoded = jwtDecode(token);
 
-                // Set the token as a cookie
-                const cookies = Cookie();
-                cookies.set('jwt', token, {
-                    expires: new Date(decoded.exp * 1000),
-                });
+            // Set the token as a cookie
+            const cookies = Cookie();
+            cookies.set('jwt', token, {
+                expires: new Date(decoded.exp * 1000),
+            });
 
-                // Navigate to the home page
-                navigate('/home');
-            }
-        } catch (err) {
-            const responseData = err.response.data;
-            if (responseData) {
-                setError(responseData.message);
-            } else {
-                setError('Could not process login request');
-            }
+            // Navigate to the home page
+            navigate('/home');
         }
     }
 
