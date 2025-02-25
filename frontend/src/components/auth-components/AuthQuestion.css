@@ -21,17 +21,3 @@
     text-decoration-thickness: 1px;
     text-underline-offset: 2px;
 }
-
-/* Responsiveness */
-
-@media (max-width: 410px) {
-    .other-question-container,
-    .question-container p {
-        font-size: 10px;
-    }
-
-    .other-question-container p a,
-    .question-container p a {
-        font-size: 10px;
-    }
-}

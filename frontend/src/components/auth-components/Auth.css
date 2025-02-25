@@ -31,13 +31,6 @@
 @media (max-width: 410px) {
     .auth-card {
         border: none;
-    }
-
-    .auth-card h1 {
-        font-size: 18px;
-    }
-
-    .description {
-        font-size: 10px;
+        padding: 0px;
     }
 }

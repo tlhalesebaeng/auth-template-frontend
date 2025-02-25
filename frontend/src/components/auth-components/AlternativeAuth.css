@@ -38,15 +38,3 @@
 .third-party-logo-container img {
     height: 13px;
 }
-
-/* Responsiveness */
-
-@media (max-width: 410px) {
-    .line-container p {
-        font-size: 10px;
-    }
-
-    .third-party-logo-container img {
-        height: 10px;
-    }
-}

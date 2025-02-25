@@ -25,13 +25,3 @@
 .submit-btn:active {
     opacity: 0.7;
 }
-
-/* Responsiveness */
-
-@media (max-width: 500px) {
-    .submit-btn,
-    .reduced-opacity-btn {
-        font-size: 10px;
-        height: 25px;
-    }
-}
