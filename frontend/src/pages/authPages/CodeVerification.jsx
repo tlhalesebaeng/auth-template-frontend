@@ -97,7 +97,9 @@ export default function CodeVerification() {
                 >
                     {isLoading ? 'Loading...' : 'Submit'}
                 </Button>
-                {error && <Error biggerMargin={true} errorMessage={error} />}
+                {error && !isLoading && (
+                    <Error biggerMargin={true} errorMessage={error} />
+                )}
             </form>
         </Auth>
     );

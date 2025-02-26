@@ -87,7 +87,7 @@ export default function Login() {
                     option="Sign up"
                     name="question-container"
                 >
-                    {error && <Error errorMessage={error} />}
+                    {error && !isLoading && <Error errorMessage={error} />}
                     <Button
                         onClick={handleLogin}
                         disabledButton={disabledButton}

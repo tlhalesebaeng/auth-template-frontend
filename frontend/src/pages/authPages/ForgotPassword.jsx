@@ -73,7 +73,7 @@ export default function ForgotPassword() {
                 >
                     {isLoading ? 'Loading...' : 'Submit'}
                 </Button>
-                {error && <Error errorMessage={error} />}
+                {error && !isLoading && <Error errorMessage={error} />}
             </form>
             <AlternativeAuth alt="Login" />
         </Auth>

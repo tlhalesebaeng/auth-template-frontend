@@ -66,7 +66,9 @@ export default function ResetPassword() {
                 >
                     {isLoading ? 'Loading...' : 'Set password'}
                 </Button>
-                {error && <Error biggerMargin={true} errorMessage={error} />}
+                {error && !isLoading && (
+                    <Error biggerMargin={true} errorMessage={error} />
+                )}
             </form>
         </Auth>
     );
