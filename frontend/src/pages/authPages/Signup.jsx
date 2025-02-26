@@ -7,30 +7,26 @@ import Input from '../../utils/Input';
 import { isValidEmail } from '../../validators';
 import { useNavigate } from 'react-router-dom';
 import Error from '../../components/Error';
-import api from '../../requestInstance';
+import { useFetch } from '../../hooks/useFetch';
 
 export default function Signup() {
     const navigate = useNavigate();
     const [data, setData] = useState({});
-    const [error, setError] = useState('');
+    const { error, res } = useFetch();
 
     async function handleCreateAccount(event) {
         event.preventDefault();
 
-        try {
-            const response = await api.post(
-                '/quiz/app/api/v1/users/signup',
-                data
-            );
-            console.log(response.data);
+        // Make the request
+        const response = await res(
+            '/quiz/app/api/v1/users/signup',
+            'post',
+            data
+        );
+
+        if (response.status === 201) {
+            // Navigate to the home page
             navigate('/home');
-        } catch (err) {
-            const responseData = err.response.data;
-            if (responseData) {
-                setError(responseData.message);
-            } else {
-                setError('Could not process login request');
-            }
         }
     }
 

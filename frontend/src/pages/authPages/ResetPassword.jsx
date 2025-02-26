@@ -4,31 +4,27 @@ import Auth from '../../components/auth-components/Auth';
 import Button from '../../utils/Button';
 import Input from '../../utils/Input';
 import Error from '../../components/Error';
-import api from '../../requestInstance';
+import { useFetch } from '../../hooks/useFetch';
 
 export default function ResetPassword() {
     const { code } = useParams();
     const navigate = useNavigate();
     const [data, setData] = useState({});
-    const [error, setError] = useState('');
+    const { error, res } = useFetch();
 
     async function handleSetPassword(event) {
         event.preventDefault();
 
-        try {
-            const response = await api.patch(
-                '/quiz/app/api/v1/users/password/${code}/new',
-                data
-            );
+        // Make the request
+        const response = await res(
+            `/quiz/app/api/v1/users/password/${code}/new`,
+            'patch',
+            data
+        );
 
+        if (response.status === 200) {
+            // Navigate to the home page
             navigate('/home');
-        } catch (err) {
-            const responseData = err.response.data;
-            if (responseData) {
-                setError(responseData.message);
-            } else {
-                setError('Could not process login request');
-            }
         }
     }
 

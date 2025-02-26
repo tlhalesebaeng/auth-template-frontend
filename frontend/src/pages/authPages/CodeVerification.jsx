@@ -1,12 +1,11 @@
 import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import axios from 'axios';
 import Auth from '../../components/auth-components/Auth';
 import AuthQuestion from '../../components/auth-components/AuthQuestion';
 import Input from '../../utils/Input';
 import Button from '../../utils/Button';
 import Error from '../../components/Error';
-import api from '../../requestInstance';
+import { useFetch } from '../../hooks/useFetch';
 
 const resendInterval = 20;
 
@@ -14,37 +13,35 @@ export default function CodeVerification() {
     const navigate = useNavigate();
     const location = useLocation();
     const [code, setCode] = useState();
-    const [error, setError] = useState('');
     const [codeResent, setCodeResent] = useState(false);
     const [resendTime, setResendTime] = useState(resendInterval); //This will cause a lot of rendering of this component, so fix it
+    const { error, res } = useFetch();
 
     async function handleSubmitCode(event) {
         event.preventDefault();
 
-        try {
-            const response = await api.get(
-                `/quiz/app/api/v1/users/password/${code}`
-            );
+        // Make the request
+        const response = await res(
+            `/quiz/app/api/v1/users/password/${code}`,
+            'get'
+        );
+
+        if (response.status === 200) {
+            // Navigate to the reset password page
             navigate(`/users/password/reset/${code}/new`);
-        } catch (err) {
-            const responseData = err.response.data;
-            if (responseData) {
-                setError(responseData.message);
-            } else {
-                setError('Could not process login request');
-            }
         }
     }
 
     async function handleResendCode(event) {
         event.preventDefault();
 
-        try {
-            const data = { email: location.state.email };
-            const response = await api.post(
-                '/quiz/app/api/v1/users/pasword/reset',
-                data
-            );
+        // Make the request
+        const response = await res('/quiz/app/api/v1/users/pasword/reset', {
+            email: location.state.email,
+        });
+
+        if (response.status === 200) {
+            // Show the timer
             setCodeResent(true);
             const time = setInterval(() => {
                 setResendTime((prevTime) => {
@@ -53,17 +50,11 @@ export default function CodeVerification() {
                 });
             }, 1000);
             setTimeout(() => {
+                // Hide the timer
                 setCodeResent(false);
                 setResendTime(resendInterval);
                 clearInterval(time);
             }, resendInterval * 1000);
-        } catch (err) {
-            const responseData = err.response.data;
-            if (responseData) {
-                setError(responseData.message);
-            } else {
-                setError('Could not process login request');
-            }
         }
     }
 

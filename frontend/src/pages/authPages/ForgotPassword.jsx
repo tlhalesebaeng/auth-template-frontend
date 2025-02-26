@@ -6,43 +6,39 @@ import Input from '../../utils/Input';
 import Button from '../../utils/Button';
 import { isValidEmail } from '../../validators';
 import Error from '../../components/Error';
-import api from '../../requestInstance';
+import { useFetch } from '../../hooks/useFetch';
 
 export default function ForgotPassword() {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
-    const [error, setError] = useState('');
+    const { error, res } = useFetch();
 
     async function handleSubmitEmail(event) {
         event.preventDefault();
 
-        try {
-            const data = { email };
-            const response = await api.post(
-                '/quiz/app/api/v1/users/pasword/reset',
-                data
-            );
+        // Make the request
+        const response = await res(
+            '/quiz/app/api/v1/users/pasword/reset',
+            'post',
+            { email }
+        );
 
+        if (response.status === 200) {
             if (import.meta.env.VITE_ENVIRONMENT === 'production') {
                 setError(
                     'This app is under development. Please contact the administrator for the verification code.'
                 );
                 setTimeout(() => {
+                    // Navigate to the code verification page
                     navigate('/users/password/reset/verify/code', {
                         state: { email },
                     });
                 }, 10000);
             } else {
+                // Navigate to the code verification page
                 navigate('/users/password/reset/verify/code', {
                     state: { email },
                 });
-            }
-        } catch (err) {
-            const responseData = err.response.data;
-            if (responseData) {
-                setError(responseData.message);
-            } else {
-                setError('Could not process login request');
             }
         }
     }
