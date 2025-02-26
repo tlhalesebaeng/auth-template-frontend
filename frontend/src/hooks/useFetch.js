@@ -16,9 +16,12 @@ const functions = {
 
 export function useFetch() {
     const [error, setError] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
 
     async function res(url, method, data = {}) {
+        setIsLoading(true);
         const response = await functions[method](url, data);
+        setIsLoading(false);
 
         if (response.status < 200 || response.status >= 300) {
             // Set the error
@@ -35,5 +38,5 @@ export function useFetch() {
         return response;
     }
 
-    return { error, res };
+    return { isLoading, error, res };
 }
