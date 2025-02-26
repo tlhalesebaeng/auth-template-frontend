@@ -114,7 +114,7 @@ export default function Signup() {
                 >
                     <Button
                         onClick={handleCreateAccount}
-                        disabledButton={disabledButton}
+                        disabledButton={isLoading ? true : disabledButton}
                     >
                         {error && !isLoading && <Error errorMessage={error} />}
 

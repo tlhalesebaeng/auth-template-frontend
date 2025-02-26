@@ -68,7 +68,7 @@ export default function ForgotPassword() {
                     />
                 </div>
                 <Button
-                    disabledButton={disabledButton}
+                    disabledButton={isLoading ? true : disabledButton}
                     onClick={handleSubmitEmail}
                 >
                     {isLoading ? 'Loading...' : 'Submit'}

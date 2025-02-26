@@ -92,7 +92,7 @@ export default function CodeVerification() {
                     onClickOption={handleResendCode}
                 ></AuthQuestion>
                 <Button
-                    disabledButton={disabledButton}
+                    disabledButton={isLoading ? true : disabledButton}
                     onClick={handleSubmitCode}
                 >
                     {isLoading ? 'Loading...' : 'Submit'}

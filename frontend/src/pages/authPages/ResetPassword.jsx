@@ -62,7 +62,7 @@ export default function ResetPassword() {
                 </div>
                 <Button
                     onClick={handleSetPassword}
-                    disabledButton={disabledButton}
+                    disabledButton={isLoading ? true : disabledButton}
                 >
                     {isLoading ? 'Loading...' : 'Set password'}
                 </Button>

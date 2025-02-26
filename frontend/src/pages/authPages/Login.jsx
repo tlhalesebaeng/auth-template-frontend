@@ -90,7 +90,7 @@ export default function Login() {
                     {error && !isLoading && <Error errorMessage={error} />}
                     <Button
                         onClick={handleLogin}
-                        disabledButton={disabledButton}
+                        disabledButton={isLoading ? true : disabledButton}
                     >
                         {isLoading ? 'Loading...' : 'Login'}
                     </Button>
