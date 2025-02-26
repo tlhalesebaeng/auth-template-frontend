@@ -33,8 +33,8 @@ export default function Login() {
 
         const response = await res(
             '/quiz/app/api/v1/users/login',
-            data,
-            'post'
+            'post',
+            data
         );
 
         if (response.status === 200) {
