@@ -23,7 +23,7 @@ export default function ForgotPassword() {
             { email }
         );
 
-        if (response.status === 200) {
+        if (response) {
             if (import.meta.env.VITE_ENVIRONMENT === 'production') {
                 setError(
                     'This app is under development. Please contact the administrator for the verification code.'

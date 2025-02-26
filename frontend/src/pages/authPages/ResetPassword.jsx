@@ -22,7 +22,7 @@ export default function ResetPassword() {
             data
         );
 
-        if (response.status === 200) {
+        if (response) {
             // Navigate to the home page
             navigate('/home');
         }

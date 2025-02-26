@@ -37,7 +37,7 @@ export default function Login() {
             data
         );
 
-        if (response.status === 200) {
+        if (response) {
             // Get the token
             const token = response.data.token;
 

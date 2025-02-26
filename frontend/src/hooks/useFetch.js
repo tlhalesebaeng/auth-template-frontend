@@ -28,6 +28,8 @@ export function useFetch() {
             } else {
                 setError('Could not process login request');
             }
+
+            return undefined;
         }
 
         return response;

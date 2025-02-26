@@ -24,7 +24,7 @@ export default function Signup() {
             data
         );
 
-        if (response.status === 201) {
+        if (response) {
             // Navigate to the home page
             navigate('/home');
         }

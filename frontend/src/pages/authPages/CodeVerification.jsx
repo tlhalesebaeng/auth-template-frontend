@@ -26,7 +26,7 @@ export default function CodeVerification() {
             'get'
         );
 
-        if (response.status === 200) {
+        if (response) {
             // Navigate to the reset password page
             navigate(`/users/password/reset/${code}/new`);
         }
