@@ -10,7 +10,7 @@ export default function ResetPassword() {
     const { code } = useParams();
     const navigate = useNavigate();
     const [data, setData] = useState({});
-    const { error, res } = useFetch();
+    const { isLoading, error, res } = useFetch();
 
     async function handleSetPassword(event) {
         event.preventDefault();
@@ -64,7 +64,7 @@ export default function ResetPassword() {
                     onClick={handleSetPassword}
                     disabledButton={disabledButton}
                 >
-                    Set password
+                    {isLoading ? 'Loading...' : 'Set password'}
                 </Button>
                 {error && <Error biggerMargin={true} errorMessage={error} />}
             </form>

@@ -12,7 +12,7 @@ import { useFetch } from '../../hooks/useFetch';
 export default function Signup() {
     const navigate = useNavigate();
     const [data, setData] = useState({});
-    const { error, res } = useFetch();
+    const { isLoading, error, res } = useFetch();
 
     async function handleCreateAccount(event) {
         event.preventDefault();
@@ -117,7 +117,8 @@ export default function Signup() {
                         disabledButton={disabledButton}
                     >
                         {error && <Error errorMessage={error} />}
-                        Create account
+
+                        {isLoading ? 'Loading...' : 'Create account'}
                     </Button>
                 </AuthQuestion>
             </form>

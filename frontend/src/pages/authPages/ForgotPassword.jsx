@@ -11,7 +11,7 @@ import { useFetch } from '../../hooks/useFetch';
 export default function ForgotPassword() {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
-    const { error, res } = useFetch();
+    const { isLoading, error, res } = useFetch();
 
     async function handleSubmitEmail(event) {
         event.preventDefault();
@@ -71,7 +71,7 @@ export default function ForgotPassword() {
                     disabledButton={disabledButton}
                     onClick={handleSubmitEmail}
                 >
-                    Submit
+                    {isLoading ? 'Loading...' : 'Submit'}
                 </Button>
                 {error && <Error errorMessage={error} />}
             </form>

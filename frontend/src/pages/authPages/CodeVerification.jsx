@@ -15,7 +15,7 @@ export default function CodeVerification() {
     const [code, setCode] = useState();
     const [codeResent, setCodeResent] = useState(false);
     const [resendTime, setResendTime] = useState(resendInterval); //This will cause a lot of rendering of this component, so fix it
-    const { error, res } = useFetch();
+    const { isLoading, error, res } = useFetch();
 
     async function handleSubmitCode(event) {
         event.preventDefault();
@@ -95,7 +95,7 @@ export default function CodeVerification() {
                     disabledButton={disabledButton}
                     onClick={handleSubmitCode}
                 >
-                    Submit
+                    {isLoading ? 'Loading...' : 'Submit'}
                 </Button>
                 {error && <Error biggerMargin={true} errorMessage={error} />}
             </form>

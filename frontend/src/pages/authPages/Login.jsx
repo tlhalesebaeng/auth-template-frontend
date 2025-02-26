@@ -15,7 +15,7 @@ import { useFetch } from '../../hooks/useFetch';
 export default function Login() {
     const navigate = useNavigate();
     const [data, setData] = useState({}); //This will cause the whole component to reload and cause some performance implications
-    const { error, res } = useFetch();
+    const { isLoading, error, res } = useFetch();
 
     //will use this function in many places, so create your own hook to handle this
     function handleChange(event, type) {
@@ -92,7 +92,7 @@ export default function Login() {
                         onClick={handleLogin}
                         disabledButton={disabledButton}
                     >
-                        Login
+                        {isLoading ? 'Loading...' : 'Login'}
                     </Button>
                 </AuthQuestion>
             </form>
