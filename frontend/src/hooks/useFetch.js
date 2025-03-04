@@ -38,5 +38,5 @@ export function useFetch() {
         return response;
     }
 
-    return { isLoading, error, res };
+    return { isLoading, error, res, setError };
 }
