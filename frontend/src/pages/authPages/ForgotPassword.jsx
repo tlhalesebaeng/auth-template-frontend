@@ -33,7 +33,7 @@ export default function ForgotPassword() {
                     navigate('/users/password/reset/verify/code', {
                         state: { email },
                     });
-                }, 10000);
+                }, 7000);
             } else {
                 // Navigate to the code verification page
                 navigate('/users/password/reset/verify/code', {
