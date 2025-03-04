@@ -11,7 +11,7 @@ import { useFetch } from '../../hooks/useFetch';
 export default function ForgotPassword() {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
-    const { isLoading, error, res } = useFetch();
+    const { isLoading, error, res, setError } = useFetch();
 
     async function handleSubmitEmail(event) {
         event.preventDefault();
