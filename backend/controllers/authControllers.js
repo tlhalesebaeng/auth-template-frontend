@@ -78,7 +78,7 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
     await user.save({ validateBeforeSave: false });
 
     if (process.env.NODE_ENV === 'development') {
-        console.log('Code :', code);
+        console.log(user.email, code);
     } else {
         try {
             const info = await sendEmail(email, code);
