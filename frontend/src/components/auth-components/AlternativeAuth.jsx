@@ -4,10 +4,9 @@ import googleLogo from '../../assets/search-logo.png';
 import facebookLogo from '../../assets/facebook-logo.png';
 import twitterLogo from '../../assets/twitter-logo.png';
 
-export default function AlternativeAuth({ alt, action }) {
-    function handleGoogleAuth() {
-        console.log(`${action} with google`);
-    }
+export default function AlternativeAuth({ alt, action, thirdPartyAuth }) {
+    // Destructure the third party handler methods
+    const { handleGoogleAuth } = thirdPartyAuth;
 
     function handleFacebookAuth() {
         console.log(`${action} with facebook`);

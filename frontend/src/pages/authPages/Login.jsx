@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useGoogleLogin } from '@react-oauth/google';
 import Cookie from 'cookie-universal';
 import { jwtDecode } from 'jwt-decode';
 import AlternativeAuth from '../../components/auth-components/AlternativeAuth';
@@ -15,7 +16,27 @@ import { useFetch } from '../../hooks/useFetch';
 export default function Login() {
     const navigate = useNavigate();
     const [data, setData] = useState({}); //This will cause the whole component to reload and cause some performance implications
-    const { isLoading, error, res } = useFetch();
+    const { isLoading, error, res, setError } = useFetch();
+
+    const login = useGoogleLogin({
+        onSuccess: (response) => {
+            // Get the token
+            const token = response.access_token;
+
+            // Get the expire time
+            const expiryTime = Date.now() + 90 * 24 * 60 * 60;
+
+            // Store the token as a cookie
+            const cookies = Cookie();
+            cookies.set('jwt', token, {
+                expires: new Date(expiryTime * 1000),
+            });
+
+            // Navigate to the home page
+            navigate('/home');
+        },
+        onError: (err) => setError('Google login failed.'),
+    });
 
     //will use this function in many places, so create your own hook to handle this
     function handleChange(event, type) {
@@ -62,6 +83,11 @@ export default function Login() {
 
     const description = 'Login in to access your account';
 
+    // Object consisting of all the third party authentication handler methods
+    const thirdPartyAuth = {
+        handleGoogleAuth: () => login(),
+    };
+
     return (
         <Auth title="Login" description={description}>
             <form>
@@ -96,7 +122,11 @@ export default function Login() {
                     </Button>
                 </AuthQuestion>
             </form>
-            <AlternativeAuth action="Login" alt="Login" />
+            <AlternativeAuth
+                thirdPartyAuth={thirdPartyAuth}
+                action="Login"
+                alt="Login"
+            />
         </Auth>
     );
 }
