@@ -1,10 +1,14 @@
 .back-container {
     margin-bottom: 10px;
     width: fit-content;
+    border: none;
+    border-radius: 5px;
+    padding-right: 5px;
 }
 
 .back-container:hover {
     cursor: pointer;
+    background-color: rgba(49, 49, 49, 0.1);
 }
 
 .back-container p {
