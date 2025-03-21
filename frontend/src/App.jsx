@@ -1,10 +1,10 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Login from './pages/authPages/Login';
-import Signup from './pages/authPages/Signup';
-import ResetPassword from './pages/authPages/ResetPassword';
-import ForgotPassword from './pages/authPages/ForgotPassword';
-import CodeVerification from './pages/authPages/CodeVerification';
-import Home from './components/app-components/Home';
+import Login from './pages/auth-pages/Login';
+import Signup from './pages/auth-pages/Signup';
+import ResetPassword from './pages/auth-pages/ResetPassword';
+import ForgotPassword from './pages/auth-pages/ForgotPassword';
+import CodeVerification from './pages/auth-pages/CodeVerification';
+import Home from './components/main-components/Home';
 import './App.css';
 
 const router = createBrowserRouter([

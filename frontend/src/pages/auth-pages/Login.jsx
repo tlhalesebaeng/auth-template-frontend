@@ -115,8 +115,8 @@ export default function Login() {
                 >
                     {error && !isLoading && <Error errorMessage={error} />}
                     <Button
-                        onClick={handleLogin}
-                        disabledButton={isLoading ? true : disabledButton}
+                        onClick={() => navigate('/home')}
+                        disabledButton={false}
                     >
                         {isLoading ? 'Loading...' : 'Login'}
                     </Button>
