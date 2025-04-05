@@ -115,18 +115,20 @@ export default function Login() {
                 >
                     {error && !isLoading && <Error errorMessage={error} />}
                     <Button
-                        onClick={() => navigate('/home')}
-                        disabledButton={false}
+                        onClick={handleLogin}
+                        disabledButton={isLoading ? true : disabledButton}
                     >
                         {isLoading ? 'Loading...' : 'Login'}
                     </Button>
                 </AuthQuestion>
             </form>
-            <AlternativeAuth
-                thirdPartyAuth={thirdPartyAuth}
-                action="Login"
-                alt="Login"
-            />
+            {/* Will implement and make this feature available later
+                <AlternativeAuth
+                    thirdPartyAuth={thirdPartyAuth}
+                    action="Login"
+                    alt="Login"
+                /> 
+            */}
         </Auth>
     );
 }

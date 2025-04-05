@@ -122,7 +122,9 @@ export default function Signup() {
                     </Button>
                 </AuthQuestion>
             </form>
-            <AlternativeAuth action="Signup" alt="Signup" />
+            {/* Will implement and make this feature available later
+                <AlternativeAuth action="Signup" alt="Signup" /> 
+            */}
         </Auth>
     );
 }
