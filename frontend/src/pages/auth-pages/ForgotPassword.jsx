@@ -75,7 +75,9 @@ export default function ForgotPassword() {
                 </Button>
                 {error && !isLoading && <Error errorMessage={error} />}
             </form>
-            <AlternativeAuth alt="Login" />
+            {/* Will implement and make this feature available later
+                <AlternativeAuth alt="Login" /> 
+            */}
         </Auth>
     );
 }
