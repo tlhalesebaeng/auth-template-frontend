@@ -29,19 +29,39 @@ A full-stack authentication application built using the MERN stack. This app all
 - Node.js and npm
 - MongoDB installed and running locally or Atlas URI
 
-### Clone the repository
+### 1. Clone the repository
 ```bash
 git clone https://github.com/tlhalesebaeng/login-register.git
+```
+### 2. Navigate to the root directory
+```bash
 cd login-register
-
-Backend Setup
+```
+### 3. Install backend dependencies
+```bash
 cd backend
 npm install
-npm start
+```
+### 4. Start the backend
 
-Frontend Setup
-cd frontend
-npm install
+```bash
 npm start
 ```
-### Author: Tlhalefo
+
+### 5. Navigate back to the root directory
+```bash
+cd ..
+```
+
+### 6. Install frontend dependencies
+```bash
+cd backend
+npm install
+```
+### 7. Start the frontend
+
+```bash
+npm start
+```
+The app will be accessible on http://localhost:5173
+### Developed by Tlhalefo
