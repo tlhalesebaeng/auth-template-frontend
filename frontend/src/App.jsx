@@ -4,7 +4,7 @@ import Signup from './pages/auth-pages/Signup';
 import ResetPassword from './pages/auth-pages/ResetPassword';
 import ForgotPassword from './pages/auth-pages/ForgotPassword';
 import CodeVerification from './pages/auth-pages/CodeVerification';
-import Home from './components/main-components/Home';
+import Home from './pages/main-pages/Home';
 import './App.css';
 
 const router = createBrowserRouter([

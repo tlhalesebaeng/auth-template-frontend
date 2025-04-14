@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import AlternativeAuth from '../../components/auth-components/AlternativeAuth';
 import Auth from '../../components/auth-components/Auth';
 import AuthQuestion from '../../components/auth-components/AuthQuestion';
 import Button from '../../utils/Button';
@@ -122,9 +121,6 @@ export default function Signup() {
                     </Button>
                 </AuthQuestion>
             </form>
-            {/* Will implement and make this feature available later
-                <AlternativeAuth action="Signup" alt="Signup" /> 
-            */}
         </Auth>
     );
 }

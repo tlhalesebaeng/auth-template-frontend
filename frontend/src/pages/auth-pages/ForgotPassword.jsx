@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Auth from '../../components/auth-components/Auth';
-import AlternativeAuth from '../../components/auth-components/AlternativeAuth';
 import Input from '../../utils/Input';
 import Button from '../../utils/Button';
 import { isValidEmail } from '../../validators';
@@ -24,7 +23,7 @@ export default function ForgotPassword() {
         );
 
         if (response) {
-            if (import.meta.env.VITE_ENVIRONMENT === 'production') {
+            if (import.meta.env.VITE_ENVIRONMENT === 'development') {
                 setError(
                     'This app is under development. Please contact the administrator for the verification code.'
                 );
@@ -75,9 +74,6 @@ export default function ForgotPassword() {
                 </Button>
                 {error && !isLoading && <Error errorMessage={error} />}
             </form>
-            {/* Will implement and make this feature available later
-                <AlternativeAuth alt="Login" /> 
-            */}
         </Auth>
     );
 }
