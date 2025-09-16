@@ -24,11 +24,11 @@ A full-stack authentication application built. This app allows users to register
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/tlhalesebaeng/login-register.git
+git clone https://github.com/tlhalesebaeng/auth-template-frontend.git
 ```
 ### 2. Navigate to the root directory
 ```bash
-cd login-register
+cd auth-template-frontend
 ```
 
 ### 3. Install frontend dependencies
