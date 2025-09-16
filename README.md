@@ -33,7 +33,7 @@ cd login-register
 
 ### 3. Install frontend dependencies
 ```bash
-cd backend
+cd frontend
 npm install
 ```
 ### 4. Start the frontend
