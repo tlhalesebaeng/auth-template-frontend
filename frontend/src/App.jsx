@@ -1,9 +1,9 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Login from './pages/auth-pages/Login';
-import Signup from './pages/auth-pages/Signup';
-import ResetPassword from './pages/auth-pages/ResetPassword';
-import ForgotPassword from './pages/auth-pages/ForgotPassword';
-import CodeVerification from './pages/auth-pages/CodeVerification';
+import Login from './features/auth/Login.jsx';
+import Signup from './features/auth/Signup.jsx';
+import ResetPassword from './features/auth/ResetPassword.jsx';
+import ForgotPassword from './features/auth/ForgotPassword.jsx';
+import CodeVerification from './features/auth/CodeVerification.jsx';
 import Home from './features/Home.jsx';
 import './App.css';
 
