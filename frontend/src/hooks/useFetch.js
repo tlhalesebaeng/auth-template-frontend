@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import api from '../requestInstance';
+import api from '../utils/requestInstance';
 
 // An object with functions for performing http requests
 const functions = {

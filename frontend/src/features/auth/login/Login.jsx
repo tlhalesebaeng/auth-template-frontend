@@ -7,7 +7,7 @@ import AuthQuestion from '../../../components/auth-components/AuthQuestion.jsx';
 import RememberMe from '../../../components/auth-components/RememberMe.jsx';
 import Button from '../../../components/main/Button.jsx';
 import Input from '../../../components/main/Input.jsx';
-import { isValidEmail } from '../../../validators.js';
+import { isValidEmail } from '../../../utils/validators.js';
 import Error from '../../errors/Error.jsx';
 import { useFetch } from '../../../hooks/useFetch.js';
 
