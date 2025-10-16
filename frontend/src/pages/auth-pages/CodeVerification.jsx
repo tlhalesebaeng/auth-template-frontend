@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Auth from '../../components/auth-components/Auth';
 import AuthQuestion from '../../components/auth-components/AuthQuestion';
-import Input from '../../utils/Input';
-import Button from '../../utils/Button';
+import Input from '../../components/Input.jsx';
+import Button from '../../components/Button.jsx';
 import Error from '../../features/errors/Error.jsx';
 import { useFetch } from '../../hooks/useFetch';
 

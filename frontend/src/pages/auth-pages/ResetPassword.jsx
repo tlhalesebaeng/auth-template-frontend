@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import Auth from '../../components/auth-components/Auth';
-import Button from '../../utils/Button';
-import Input from '../../utils/Input';
+import Button from '../../components/Button.jsx';
+import Input from '../../components/Input.jsx';
 import Error from '../../features/errors/Error.jsx';
 import { useFetch } from '../../hooks/useFetch';
 
