@@ -8,7 +8,7 @@ import RememberMe from '../../components/auth-components/RememberMe';
 import Button from '../../utils/Button';
 import Input from '../../utils/Input';
 import { isValidEmail } from '../../validators';
-import Error from '../../components/Error';
+import Error from '../../features/errors/Error.jsx';
 import { useFetch } from '../../hooks/useFetch';
 
 export default function Login() {

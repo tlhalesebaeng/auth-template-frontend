@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import Auth from '../../components/auth-components/Auth';
 import Button from '../../utils/Button';
 import Input from '../../utils/Input';
-import Error from '../../components/Error';
+import Error from '../../features/errors/Error.jsx';
 import { useFetch } from '../../hooks/useFetch';
 
 export default function ResetPassword() {

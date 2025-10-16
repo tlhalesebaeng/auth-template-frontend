@@ -5,7 +5,7 @@ import Button from '../../utils/Button';
 import Input from '../../utils/Input';
 import { isValidEmail } from '../../validators';
 import { useNavigate } from 'react-router-dom';
-import Error from '../../components/Error';
+import Error from '../../features/errors/Error.jsx';
 import { useFetch } from '../../hooks/useFetch';
 
 export default function Signup() {
