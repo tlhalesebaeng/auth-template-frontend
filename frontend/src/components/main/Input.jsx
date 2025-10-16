@@ -1,7 +1,7 @@
-import shownPassword from '../assets/shown-password-logo.png';
-import hiddenPassword from '../assets/hidden-password-logo.png';
-import './Input.css';
 import { useRef, useState } from 'react';
+import shownPassword from '../../assets/shown-password-logo.png';
+import hiddenPassword from '../../assets/hidden-password-logo.png';
+import './Input.css';
 
 export default function Input({
     onChange,

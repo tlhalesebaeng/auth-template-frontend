@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Auth from '../../../components/auth-components/Auth.jsx';
-import Input from '../../../components/Input.jsx';
-import Button from '../../../components/Button.jsx';
+import Input from '../../../components/main/Input.jsx';
+import Button from '../../../components/main/Button.jsx';
 import { isValidEmail } from '../../../validators.js';
 import Error from '../../errors/Error.jsx';
 import { useFetch } from '../../../hooks/useFetch.js';
