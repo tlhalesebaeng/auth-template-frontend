@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import Auth from '../../components/auth-components/Auth';
 import AuthQuestion from '../../components/auth-components/AuthQuestion';
-import Button from '../../utils/Button';
-import Input from '../../utils/Input';
+import Button from '../../components/Button.jsx';
+import Input from '../../components/Input.jsx';
 import { isValidEmail } from '../../validators';
 import { useNavigate } from 'react-router-dom';
 import Error from '../../features/errors/Error.jsx';
