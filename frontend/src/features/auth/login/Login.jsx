@@ -2,14 +2,14 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Cookie from 'cookie-universal';
 import { jwtDecode } from 'jwt-decode';
-import Auth from '../../components/auth-components/Auth.jsx';
-import AuthQuestion from '../../components/auth-components/AuthQuestion.jsx';
-import RememberMe from '../../components/auth-components/RememberMe.jsx';
-import Button from '../../components/Button.jsx';
-import Input from '../../components/Input.jsx';
-import { isValidEmail } from '../../validators.js';
-import Error from '../errors/Error.jsx';
-import { useFetch } from '../../hooks/useFetch.js';
+import Auth from '../../../components/auth-components/Auth.jsx';
+import AuthQuestion from '../../../components/auth-components/AuthQuestion.jsx';
+import RememberMe from '../../../components/auth-components/RememberMe.jsx';
+import Button from '../../../components/Button.jsx';
+import Input from '../../../components/Input.jsx';
+import { isValidEmail } from '../../../validators.js';
+import Error from '../../errors/Error.jsx';
+import { useFetch } from '../../../hooks/useFetch.js';
 
 export default function Login() {
     const navigate = useNavigate();

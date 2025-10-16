@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import Auth from '../../components/auth-components/Auth.jsx';
-import AuthQuestion from '../../components/auth-components/AuthQuestion.jsx';
-import Button from '../../components/Button.jsx';
-import Input from '../../components/Input.jsx';
-import { isValidEmail } from '../../validators.js';
+import Auth from '../../../components/auth-components/Auth.jsx';
+import AuthQuestion from '../../../components/auth-components/AuthQuestion.jsx';
+import Button from '../../../components/Button.jsx';
+import Input from '../../../components/Input.jsx';
+import { isValidEmail } from '../../../validators.js';
 import { useNavigate } from 'react-router-dom';
-import Error from '../errors/Error.jsx';
-import { useFetch } from '../../hooks/useFetch.js';
+import Error from '../../errors/Error.jsx';
+import { useFetch } from '../../../hooks/useFetch.js';
 
 export default function Signup() {
     const navigate = useNavigate();

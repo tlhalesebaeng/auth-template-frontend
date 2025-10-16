@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import Auth from '../../components/auth-components/Auth.jsx';
-import Button from '../../components/Button.jsx';
-import Input from '../../components/Input.jsx';
-import Error from '../errors/Error.jsx';
-import { useFetch } from '../../hooks/useFetch.js';
+import Auth from '../../../components/auth-components/Auth.jsx';
+import Button from '../../../components/Button.jsx';
+import Input from '../../../components/Input.jsx';
+import Error from '../../errors/Error.jsx';
+import { useFetch } from '../../../hooks/useFetch.js';
 
 export default function ResetPassword() {
     const { code } = useParams();
