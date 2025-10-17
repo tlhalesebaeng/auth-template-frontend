@@ -15,20 +15,12 @@ export default function Input({
 
     function handleInputLogo() {
         if (inputRef.current.value !== '') {
-            setInputType((prevState) => {
-                if (prevState === 'password') {
-                    return 'text';
-                }
-
-                return 'password';
-            });
-            setInputLogo((prevState) => {
-                if (prevState === shownPassword) {
-                    return hiddenPassword;
-                }
-
-                return shownPassword;
-            });
+            setInputType((prevState) =>
+                prevState === 'password' ? 'text' : 'password'
+            );
+            setInputLogo((prevState) =>
+                prevState === shownPassword ? hiddenPassword : shownPassword
+            );
         }
     }
 
