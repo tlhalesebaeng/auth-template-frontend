@@ -51,6 +51,8 @@ export default function ResetPassword() {
                         }}
                         type="password"
                         placeholder="New Password"
+                        htmlFor="new-password"
+                        inputId="new-password"
                     />
                     <Input
                         onChange={(event) => {
@@ -58,6 +60,8 @@ export default function ResetPassword() {
                         }}
                         type="password"
                         placeholder="Confirm New Password"
+                        htmlFor="confirm-new-password"
+                        inputId="confirm-new-password"
                     />
                 </div>
                 <Button
