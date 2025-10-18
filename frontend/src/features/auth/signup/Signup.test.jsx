@@ -22,6 +22,42 @@ describe('Signup component', () => {
         expect(backBtn).toBeNull();
     });
 
+    it('renders an input field with label text "First Name"', () => {
+        render(<Signup />);
+        const input = screen.getByLabelText('First Name');
+        expect(input).toBeInTheDocument();
+    });
+
+    it('renders an input field with label text "Last Name"', () => {
+        render(<Signup />);
+        const input = screen.getByLabelText('Last Name');
+        expect(input).toBeInTheDocument();
+    });
+
+    it('renders an input field with label text "Email"', () => {
+        render(<Signup />);
+        const input = screen.getByLabelText('Email');
+        expect(input).toBeInTheDocument();
+    });
+
+    it('renders an input field with label text "Username"', () => {
+        render(<Signup />);
+        const input = screen.getByLabelText('Username');
+        expect(input).toBeInTheDocument();
+    });
+
+    it('renders an input field with label text "Password"', () => {
+        render(<Signup />);
+        const input = screen.getByLabelText('Password');
+        expect(input).toBeInTheDocument();
+    });
+
+    it('renders an input field with label text "Confirm Password"', () => {
+        render(<Signup />);
+        const input = screen.getByLabelText('Confirm Password');
+        expect(input).toBeInTheDocument();
+    });
+
     it('renders the AuthQuestion component properly', () => {
         render(<Signup />);
         const question = screen.getByText('Already have an account?');
