@@ -24,8 +24,8 @@ describe('ForgotPassword component', () => {
 
     it('renders one input field', () => {
         render(<ForgotPassword />);
-        const form = screen.getByRole('textbox');
-        expect(form).toBeInTheDocument();
+        const input = screen.getByRole('textbox');
+        expect(input).toBeInTheDocument();
     });
 
     it('renders a button with the text "Submit" initially', () => {
