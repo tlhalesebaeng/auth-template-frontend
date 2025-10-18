@@ -22,6 +22,12 @@ describe('ForgotPassword component', () => {
         expect(backTitle).toBeInTheDocument();
     });
 
+    it('renders an input field with label text "Email"', () => {
+        render(<ForgotPassword />);
+        const input = screen.getByLabelText('Email');
+        expect(input).toBeInTheDocument();
+    });
+
     it('renders one input field', () => {
         render(<ForgotPassword />);
         const input = screen.getByRole('textbox');
