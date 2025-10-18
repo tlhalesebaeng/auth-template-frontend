@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import Auth from '../../../components/auth-components/Auth.jsx';
+import Auth from '../../../components/auth-components/auth-wrapper/Auth.jsx';
 import Button from '../../../components/main/button/Button.jsx';
 import Input from '../../../components/main/input/Input.jsx';
 import Error from '../../errors/Error.jsx';

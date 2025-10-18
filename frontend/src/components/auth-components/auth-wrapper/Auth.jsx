@@ -1,4 +1,4 @@
-import Back from '../main/back/Back.jsx';
+import Back from '../../main/back/Back.jsx';
 import './Auth.css';
 
 export default function Auth({ children, title, description, backTitle }) {

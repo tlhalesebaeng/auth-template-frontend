@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import Auth from '../../../components/auth-components/Auth.jsx';
-import AuthQuestion from '../../../components/auth-components/AuthQuestion.jsx';
+import Auth from '../../../components/auth-components/auth-wrapper/Auth.jsx';
+import AuthQuestion from '../../../components/auth-components/auth-question/AuthQuestion.jsx';
 import Input from '../../../components/main/input/Input.jsx';
 import Button from '../../../components/main/button/Button.jsx';
 import Error from '../../errors/Error.jsx';

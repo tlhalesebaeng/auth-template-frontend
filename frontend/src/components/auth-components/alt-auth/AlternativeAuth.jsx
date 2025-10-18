@@ -1,8 +1,8 @@
 import './AlternativeAuth.css';
-import AuthLogo from './AuthLogo';
-import googleLogo from '../../assets/search-logo.png';
-import facebookLogo from '../../assets/facebook-logo.png';
-import twitterLogo from '../../assets/twitter-logo.png';
+import AuthLogo from '../auth-logo/AuthLogo';
+import googleLogo from '../../../assets/search-logo.png';
+import facebookLogo from '../../../assets/facebook-logo.png';
+import twitterLogo from '../../../assets/twitter-logo.png';
 
 export default function AlternativeAuth({ alt, action, thirdPartyAuth }) {
     // Destructure the third party handler methods

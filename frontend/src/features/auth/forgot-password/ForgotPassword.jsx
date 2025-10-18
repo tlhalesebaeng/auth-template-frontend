@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Auth from '../../../components/auth-components/Auth.jsx';
+import Auth from '../../../components/auth-components/auth-wrapper/Auth.jsx';
 import Input from '../../../components/main/input/Input.jsx';
 import Button from '../../../components/main/button/Button.jsx';
 import { isValidEmail } from '../../../utils/validators.js';

@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import Auth from '../../../components/auth-components/Auth.jsx';
-import AuthQuestion from '../../../components/auth-components/AuthQuestion.jsx';
+import Auth from '../../../components/auth-components/auth-wrapper/Auth.jsx';
+import AuthQuestion from '../../../components/auth-components/auth-question/AuthQuestion.jsx';
 import Button from '../../../components/main/button/Button.jsx';
 import Input from '../../../components/main/input/Input.jsx';
 import { isValidEmail } from '../../../utils/validators.js';
