@@ -71,6 +71,8 @@ export default function Login() {
                         }}
                         type="email"
                         placeholder="Email"
+                        htmlFor="email"
+                        inputId="email"
                     />
                     <Input
                         onChange={(event) => {
@@ -78,6 +80,8 @@ export default function Login() {
                         }}
                         type="password"
                         placeholder="Password"
+                        htmlFor="password"
+                        inputId="password"
                     />
                 </div>
                 <RememberMe
