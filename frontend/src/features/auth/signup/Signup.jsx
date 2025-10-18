@@ -112,12 +112,11 @@ export default function Signup() {
                     name="question-container"
                     onClick={() => navigate('/')}
                 >
+                    {error && !isLoading && <Error errorMessage={error} />}
                     <Button
                         onClick={handleCreateAccount}
                         disabledButton={isLoading ? true : disabledButton}
                     >
-                        {error && !isLoading && <Error errorMessage={error} />}
-
                         {isLoading ? 'Loading...' : 'Create account'}
                     </Button>
                 </AuthQuestion>
