@@ -79,6 +79,8 @@ export default function CodeVerification() {
                         }}
                         type="text"
                         placeholder="Enter Code"
+                        htmlFor="code-text"
+                        inputId="code-text"
                     />
                 </div>
                 <AuthQuestion
