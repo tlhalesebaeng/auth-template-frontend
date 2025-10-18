@@ -87,9 +87,9 @@ export default function CodeVerification() {
                             ? `You can resend after: ${resendTime} seconds`
                             : "Didn't receive the code?"
                     }
-                    option={codeResent ? '' : 'Resend'}
+                    linkText={codeResent ? '' : 'Resend'}
                     name="other-question-container"
-                    onClickOption={handleResendCode}
+                    onClick={handleResendCode}
                 ></AuthQuestion>
                 <Button
                     disabledButton={isLoading ? true : disabledButton}

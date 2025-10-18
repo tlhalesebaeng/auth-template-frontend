@@ -108,8 +108,9 @@ export default function Signup() {
                 </div>
                 <AuthQuestion
                     question="Already have an account?"
-                    option="Login"
+                    linkText="Login"
                     name="question-container"
+                    onClick={() => navigate('/')}
                 >
                     <Button
                         onClick={handleCreateAccount}

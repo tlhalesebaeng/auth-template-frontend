@@ -1,28 +1,12 @@
-import { NavLink } from 'react-router-dom';
 import './AuthQuestion.css';
 
-export default function AuthQuestion({
-    children,
-    question,
-    option,
-    name,
-    onClickOption,
-}) {
-    let optionUrl;
-    if (option === 'Login') {
-        optionUrl = '/';
-    } else if (option === 'Sign up') {
-        optionUrl = '/users/signup';
-    }
-
+export default function AuthQuestion(props) {
+    const { children, question, name, onClick, linkText } = props;
     return (
         <div className={`${name} column`}>
             {children}
             <p>
-                {question}{' '}
-                <NavLink onClick={onClickOption} to={optionUrl}>
-                    {option}
-                </NavLink>
+                {question} <a onClick={onClick}>{linkText}</a>
             </p>
         </div>
     );

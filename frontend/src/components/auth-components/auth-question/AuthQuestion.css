@@ -17,6 +17,7 @@
 
 .question-container p a:hover,
 .other-question-container p a:hover {
+    cursor: pointer;
     text-decoration: underline;
     text-decoration-thickness: 1px;
     text-underline-offset: 2px;
