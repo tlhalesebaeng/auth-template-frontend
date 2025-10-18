@@ -65,6 +65,8 @@ export default function Signup() {
                             rightMargin="right-margin"
                             type="text"
                             placeholder="First Name"
+                            htmlFor="firstname"
+                            inputId="firstname"
                         />
                         <Input
                             onChange={(event) => {
@@ -72,6 +74,8 @@ export default function Signup() {
                             }}
                             type="text"
                             placeholder="Last Name"
+                            htmlFor="lastname"
+                            inputId="lastname"
                         />
                     </div>
                     <div className="row">
@@ -82,6 +86,8 @@ export default function Signup() {
                             rightMargin="right-margin"
                             type="text"
                             placeholder="Email"
+                            htmlFor="email"
+                            inputId="email"
                         />
                         <Input
                             onChange={(event) => {
@@ -89,6 +95,8 @@ export default function Signup() {
                             }}
                             type="text"
                             placeholder="Username"
+                            htmlFor="username"
+                            inputId="username"
                         />
                     </div>
                     <Input
@@ -97,6 +105,8 @@ export default function Signup() {
                         }}
                         type="password"
                         placeholder="Password"
+                        htmlFor="password"
+                        inputId="password"
                     />
                     <Input
                         onChange={(event) => {
@@ -104,6 +114,8 @@ export default function Signup() {
                         }}
                         type="password"
                         placeholder="Confirm Password"
+                        htmlFor="confirm-password"
+                        inputId="confirm-password"
                     />
                 </div>
                 <AuthQuestion
