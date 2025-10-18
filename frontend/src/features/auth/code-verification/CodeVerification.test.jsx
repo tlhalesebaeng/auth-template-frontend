@@ -44,7 +44,7 @@ describe('CodeVerification component', () => {
         expect(btn).toBeInTheDocument();
     });
 
-    it('renders an error message component when the useFetch hook has an error', () => {
+    it('renders the message component when the useFetch hook has an error', () => {
         // Mock the useFetch hook so that it can return an error
         vi.mock('../../../hooks/useFetch.js', async () => {
             const originalHook = await vi.importActual(
