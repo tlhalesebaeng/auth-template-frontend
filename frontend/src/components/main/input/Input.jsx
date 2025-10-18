@@ -3,12 +3,8 @@ import shownPassword from '../../../assets/shown-password-logo.png';
 import hiddenPassword from '../../../assets/hidden-password-logo.png';
 import './Input.css';
 
-export default function Input({
-    onChange,
-    type = 'text',
-    placeholder,
-    rightMargin,
-}) {
+export default function Input(props) {
+    const { onChange, type = 'text', placeholder, rightMargin } = props;
     const [inputType, setInputType] = useState(type);
     const [inputLogo, setInputLogo] = useState(hiddenPassword);
     const inputRef = useRef();
