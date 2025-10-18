@@ -4,7 +4,7 @@ import Cookie from 'cookie-universal';
 import { jwtDecode } from 'jwt-decode';
 import Auth from '../../../components/auth-components/auth-wrapper/Auth.jsx';
 import AuthQuestion from '../../../components/auth-components/auth-question/AuthQuestion.jsx';
-import RememberMe from '../../../components/auth-components/remember-me/RememberMe.jsx';
+import RememberMe from './remember-me/RememberMe.jsx';
 import Button from '../../../components/main/button/Button.jsx';
 import Input from '../../../components/main/input/Input.jsx';
 import { isValidEmail } from '../../../utils/validators.js';
