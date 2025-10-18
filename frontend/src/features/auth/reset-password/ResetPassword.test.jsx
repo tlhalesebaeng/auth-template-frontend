@@ -23,6 +23,18 @@ describe('ResetPassword component', () => {
         expect(backBtn).toBeNull();
     });
 
+    it('renders an input field with label text "New Password"', () => {
+        render(<ResetPassword />);
+        const input = screen.getByLabelText('New Password');
+        expect(input).toBeInTheDocument();
+    });
+
+    it('renders an input field with label text "Confirm New Password"', () => {
+        render(<ResetPassword />);
+        const input = screen.getByLabelText('Confirm New Password');
+        expect(input).toBeInTheDocument();
+    });
+
     it('renders a button with the text "Set password" initially', () => {
         render(<ResetPassword />);
         const btn = screen.getByRole('button', { name: 'Set password' });
