@@ -80,7 +80,7 @@ export default function Login() {
                         placeholder="Password"
                     />
                 </div>
-                <RememberMe type="Login" checkboxText="Remember me" />
+                <RememberMe />
                 <AuthQuestion
                     question="Don't have an account?"
                     option="Sign up"
