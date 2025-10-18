@@ -23,6 +23,12 @@ describe('CodeVerification component', () => {
         expect(backTitle).toBeInTheDocument();
     });
 
+    it('renders an input field with label text "Email"', () => {
+        render(<CodeVerification />);
+        const input = screen.getByLabelText('Enter Code');
+        expect(input).toBeInTheDocument();
+    });
+
     it('renders one input field', () => {
         render(<CodeVerification />);
         const input = screen.getByRole('textbox');
