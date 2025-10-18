@@ -4,7 +4,14 @@ import hiddenPassword from '../../../assets/hidden-password-logo.png';
 import './Input.css';
 
 export default function Input(props) {
-    const { onChange, type = 'text', placeholder, rightMargin } = props;
+    const {
+        onChange,
+        type = 'text',
+        placeholder,
+        rightMargin,
+        htmlFor,
+        inputId,
+    } = props;
     const [inputType, setInputType] = useState(type);
     const [inputLogo, setInputLogo] = useState(hiddenPassword);
     const inputRef = useRef();
@@ -28,8 +35,9 @@ export default function Input(props) {
                 type={inputType}
                 placeholder=" "
                 autoComplete="on"
+                id={inputId}
             />
-            <label htmlFor="">{placeholder}</label>
+            <label htmlFor={htmlFor}>{placeholder}</label>
             {type === 'password' && (
                 <img onClick={handleInputLogo} src={inputLogo} />
             )}
