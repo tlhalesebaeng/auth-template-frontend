@@ -64,6 +64,8 @@ export default function ForgotPassword() {
                         }}
                         type="email"
                         placeholder="Email"
+                        htmlFor="email"
+                        inputId="email"
                     />
                 </div>
                 <Button
