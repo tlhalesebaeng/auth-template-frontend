@@ -20,6 +20,18 @@ describe('Login component', () => {
         expect(backBtn).toBeNull();
     });
 
+    it('renders an input field with htmlFor property set to "email"', () => {
+        render(<Login />);
+        const input = screen.getByLabelText('Email');
+        expect(input).toBeInTheDocument();
+    });
+
+    it('renders an input field with htmlFor property set to "password"', () => {
+        render(<Login />);
+        const input = screen.getByLabelText('Password');
+        expect(input).toBeInTheDocument();
+    });
+
     it('renders RememberMe component properly', () => {
         render(<Login />);
         const forgotPassText = screen.getByText('Forgot Password');
