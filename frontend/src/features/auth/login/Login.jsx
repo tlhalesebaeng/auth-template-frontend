@@ -26,6 +26,11 @@ export default function Login() {
         });
     }
 
+    // Function to navigate to the forgot password page
+    function handleForgotPassword() {
+        navigate('/users/password/reset');
+    }
+
     // Function to login the user
     async function handleLogin(event) {
         event.preventDefault();
@@ -80,7 +85,7 @@ export default function Login() {
                         placeholder="Password"
                     />
                 </div>
-                <RememberMe />
+                <RememberMe onForgotPassword={handleForgotPassword} />
                 <AuthQuestion
                     question="Don't have an account?"
                     option="Sign up"
