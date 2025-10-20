@@ -1,0 +1,9 @@
+.app-error-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.app-error-details p {
+    margin-top: 20px;
+}
