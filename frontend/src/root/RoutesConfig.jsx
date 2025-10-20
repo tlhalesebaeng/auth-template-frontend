@@ -8,27 +8,42 @@ import Home from '../features/Home.jsx';
 const routesConfig = [
     {
         path: '/',
-        element: <Login />,
-    },
-    {
-        path: '/users/signup',
-        element: <Signup />,
-    },
-    {
-        path: '/users/password/reset',
-        element: <ForgotPassword />,
-    },
-    {
-        path: '/users/password/reset/verify/code',
-        element: <CodeVerification />,
-    },
-    {
-        path: '/users/password/reset/:code/new',
-        element: <ResetPassword />,
-    },
-    {
-        path: '/home',
-        element: <Home />,
+        children: [
+            {
+                index: true,
+                element: <Login />,
+            },
+            {
+                path: 'users',
+                children: [
+                    {
+                        path: 'signup',
+                        element: <Signup />,
+                    },
+                    {
+                        path: 'password/reset',
+                        children: [
+                            {
+                                index: true,
+                                element: <ForgotPassword />,
+                            },
+                            {
+                                path: 'verify/code',
+                                element: <CodeVerification />,
+                            },
+                            {
+                                path: ':code/new',
+                                element: <ResetPassword />,
+                            },
+                        ],
+                    },
+                ],
+            },
+            {
+                path: 'home',
+                element: <Home />,
+            },
+        ],
     },
 ];
 
