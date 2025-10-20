@@ -4,7 +4,7 @@ import Auth from '../../../components/auth-components/auth-wrapper/Auth.jsx';
 import AuthQuestion from '../../../components/auth-components/auth-question/AuthQuestion.jsx';
 import Input from '../../../components/main/input/Input.jsx';
 import Button from '../../../components/main/button/Button.jsx';
-import Error from '../../errors/Error.jsx';
+import Error from '../../errors/error-message/Error.jsx';
 import { useFetch } from '../../../hooks/useFetch.js';
 
 const resendInterval = 20;

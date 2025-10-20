@@ -8,7 +8,7 @@ import RememberMe from './remember-me/RememberMe.jsx';
 import Button from '../../../components/main/button/Button.jsx';
 import Input from '../../../components/main/input/Input.jsx';
 import { isValidEmail } from '../../../utils/validators.js';
-import Error from '../../errors/Error.jsx';
+import Error from '../../errors/error-message/Error.jsx';
 import { useFetch } from '../../../hooks/useFetch.js';
 
 export default function Login() {
