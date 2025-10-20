@@ -5,7 +5,7 @@ import Button from '../../../components/main/button/Button.jsx';
 import Input from '../../../components/main/input/Input.jsx';
 import { isValidEmail } from '../../../utils/validators.js';
 import { useNavigate } from 'react-router-dom';
-import Error from '../../errors/error-message/Error.jsx';
+import ErrorMessage from '../../errors/error-message/ErrorMessage.jsx';
 import { useFetch } from '../../../hooks/useFetch.js';
 
 export default function Signup() {
@@ -124,7 +124,9 @@ export default function Signup() {
                     name="question-container"
                     onClick={() => navigate('/')}
                 >
-                    {error && !isLoading && <Error errorMessage={error} />}
+                    {error && !isLoading && (
+                        <ErrorMessage errorMessage={error} />
+                    )}
                     <Button
                         onClick={handleCreateAccount}
                         disabledButton={isLoading ? true : disabledButton}

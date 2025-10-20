@@ -4,7 +4,7 @@ import Auth from '../../../components/auth-components/auth-wrapper/Auth.jsx';
 import Input from '../../../components/main/input/Input.jsx';
 import Button from '../../../components/main/button/Button.jsx';
 import { isValidEmail } from '../../../utils/validators.js';
-import Error from '../../errors/error-message/Error.jsx';
+import ErrorMessage from '../../errors/error-message/ErrorMessage.jsx';
 import { useFetch } from '../../../hooks/useFetch.js';
 
 export default function ForgotPassword() {
@@ -74,7 +74,7 @@ export default function ForgotPassword() {
                 >
                     {isLoading ? 'Loading...' : 'Submit'}
                 </Button>
-                {error && !isLoading && <Error errorMessage={error} />}
+                {error && !isLoading && <ErrorMessage errorMessage={error} />}
             </form>
         </Auth>
     );

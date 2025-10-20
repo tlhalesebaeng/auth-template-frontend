@@ -4,7 +4,7 @@ import Auth from '../../../components/auth-components/auth-wrapper/Auth.jsx';
 import AuthQuestion from '../../../components/auth-components/auth-question/AuthQuestion.jsx';
 import Input from '../../../components/main/input/Input.jsx';
 import Button from '../../../components/main/button/Button.jsx';
-import Error from '../../errors/error-message/Error.jsx';
+import ErrorMessage from '../../errors/error-message/ErrorMessage.jsx';
 import { useFetch } from '../../../hooks/useFetch.js';
 
 const resendInterval = 20;
@@ -100,7 +100,7 @@ export default function CodeVerification() {
                     {isLoading ? 'Loading...' : 'Submit'}
                 </Button>
                 {error && !isLoading && (
-                    <Error biggerMargin={true} errorMessage={error} />
+                    <ErrorMessage biggerMargin={true} errorMessage={error} />
                 )}
             </form>
         </Auth>

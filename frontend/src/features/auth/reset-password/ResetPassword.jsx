@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import Auth from '../../../components/auth-components/auth-wrapper/Auth.jsx';
 import Button from '../../../components/main/button/Button.jsx';
 import Input from '../../../components/main/input/Input.jsx';
-import Error from '../../errors/error-message/Error.jsx';
+import ErrorMessage from '../../errors/error-message/ErrorMessage.jsx';
 import { useFetch } from '../../../hooks/useFetch.js';
 
 export default function ResetPassword() {
@@ -71,7 +71,7 @@ export default function ResetPassword() {
                     {isLoading ? 'Loading...' : 'Set password'}
                 </Button>
                 {error && !isLoading && (
-                    <Error biggerMargin={true} errorMessage={error} />
+                    <ErrorMessage biggerMargin={true} errorMessage={error} />
                 )}
             </form>
         </Auth>

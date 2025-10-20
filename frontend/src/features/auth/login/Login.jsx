@@ -8,7 +8,7 @@ import RememberMe from './remember-me/RememberMe.jsx';
 import Button from '../../../components/main/button/Button.jsx';
 import Input from '../../../components/main/input/Input.jsx';
 import { isValidEmail } from '../../../utils/validators.js';
-import Error from '../../errors/error-message/Error.jsx';
+import ErrorMessage from '../../errors/error-message/ErrorMessage.jsx';
 import { useFetch } from '../../../hooks/useFetch.js';
 
 export default function Login() {
@@ -93,7 +93,9 @@ export default function Login() {
                     name="question-container"
                     onClick={() => navigate('/users/signup')}
                 >
-                    {error && !isLoading && <Error errorMessage={error} />}
+                    {error && !isLoading && (
+                        <ErrorMessage errorMessage={error} />
+                    )}
                     <Button
                         onClick={handleLogin}
                         disabledButton={isLoading ? true : disabledButton}
