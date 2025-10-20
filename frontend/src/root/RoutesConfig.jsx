@@ -4,12 +4,12 @@ import ResetPassword from '../features/auth/reset-password/ResetPassword.jsx';
 import ForgotPassword from '../features/auth/forgot-password/ForgotPassword.jsx';
 import CodeVerification from '../features/auth/code-verification/CodeVerification.jsx';
 import Home from '../features/Home.jsx';
-import AppError from '../features/errors/app-error/AppError.jsx';
+import RouteError from '../features/errors/routes/RouteError.jsx';
 
 const routesConfig = [
     {
         path: '/',
-        errorElement: <AppError />,
+        errorElement: <RouteError />,
         children: [
             {
                 index: true,
