@@ -4,7 +4,7 @@ import ResetPassword from '../features/auth/reset-password/ResetPassword.jsx';
 import ForgotPassword from '../features/auth/forgot-password/ForgotPassword.jsx';
 import CodeVerification from '../features/auth/code-verification/CodeVerification.jsx';
 import Home from '../features/Home.jsx';
-import RouteError from '../features/errors/routes/RouteError.jsx';
+import RouteError from '../features/errors/routes/main/RouteError.jsx';
 
 const routesConfig = [
     {
