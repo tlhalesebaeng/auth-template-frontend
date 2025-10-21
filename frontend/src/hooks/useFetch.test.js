@@ -16,53 +16,53 @@ describe('useFetch hook', () => {
         vi.clearAllMocks();
     });
 
-    it('should return an isLoading property', () => {
+    it('returns an isLoading property', () => {
         const { result } = renderHook(() => useFetch());
         expect(result.current.isLoading).toBeDefined();
     });
 
-    it('should return an error property', () => {
+    it('returns an error property', () => {
         const { result } = renderHook(() => useFetch());
         expect(result.current.error).toBeDefined();
     });
 
-    it('should return a res property', () => {
+    it('returns a res property', () => {
         const { result } = renderHook(() => useFetch());
         expect(result.current.res).toBeDefined();
     });
 
-    it('should return a setError property', () => {
+    it('returns a setError property', () => {
         const { result } = renderHook(() => useFetch());
         expect(result.current.setError).toBeDefined();
     });
 
-    it('should return a res property with the type of function', () => {
+    it('returns a res property with the type of function', () => {
         const { result } = renderHook(() => useFetch());
         expect(result.current.res).toBeTypeOf('function');
     });
 
-    it('should return a setError property with the type of function', () => {
+    it('returns a setError property with the type of function', () => {
         const { result } = renderHook(() => useFetch());
         expect(result.current.setError).toBeTypeOf('function');
     });
 
-    it('should have isLoading property set to false initially', () => {
+    it('sets isLoading property to false initially', () => {
         const { result } = renderHook(() => useFetch());
         expect(result.current.isLoading).toBe(false);
     });
 
-    it('should have an empty string error property initially', () => {
+    it('sets the error property to an empty string initially', () => {
         const { result } = renderHook(() => useFetch());
         expect(result.current.error).toBe('');
     });
 
-    it('should update the error property correctly', () => {
+    it('updates the error property correctly', () => {
         const { result } = renderHook(() => useFetch());
         act(() => result.current.setError('test-error'));
         expect(result.current.error).toBe('test-error');
     });
 
-    it('should call the "GET" method with the correct arguments', async () => {
+    it('calls the "GET" method with the correct arguments', async () => {
         api.get.mockResolvedValueOnce({});
 
         const { result } = renderHook(() => useFetch());
@@ -72,7 +72,7 @@ describe('useFetch hook', () => {
         expect(api.get).toHaveBeenCalledWith('/get-test-url');
     });
 
-    it('should call the "POST" method with the correct arguments', async () => {
+    it('calls the "POST" method with the correct arguments', async () => {
         api.post.mockResolvedValueOnce({});
 
         const { result } = renderHook(() => useFetch());
@@ -84,7 +84,7 @@ describe('useFetch hook', () => {
         expect(api.post).toHaveBeenCalledWith('/post-test-url', {});
     });
 
-    it('should call the "PATCH" method with the correct arguments', async () => {
+    it('calls the "PATCH" method with the correct arguments', async () => {
         api.patch.mockResolvedValueOnce({});
 
         const { result } = renderHook(() => useFetch());
@@ -96,7 +96,7 @@ describe('useFetch hook', () => {
         expect(api.patch).toHaveBeenCalledWith('/patch-test-url', {});
     });
 
-    it('should return the expected response data for a successful "GET" request', async () => {
+    it('returns the expected response data for a successful "GET" request', async () => {
         api.get.mockResolvedValueOnce({
             status: 200,
             data: 'get-request-test-data',
@@ -111,7 +111,7 @@ describe('useFetch hook', () => {
         expect(response.data).toBe('get-request-test-data');
     });
 
-    it('should return the expected response data for a successful "POST" request', async () => {
+    it('returns the expected response data for a successful "POST" request', async () => {
         api.post.mockResolvedValueOnce({
             status: 200,
             data: 'post-request-test-data',
@@ -126,7 +126,7 @@ describe('useFetch hook', () => {
         expect(response.data).toBe('post-request-test-data');
     });
 
-    it('should return the expected response data for a successful "PATCH" request', async () => {
+    it('returns the expected response data for a successful "PATCH" request', async () => {
         api.patch.mockResolvedValueOnce({
             status: 200,
             data: 'patch-request-test-data',
@@ -141,7 +141,7 @@ describe('useFetch hook', () => {
         expect(response.data).toBe('patch-request-test-data');
     });
 
-    it('should update the error state correcly for unsuccessful "GET" requests', async () => {
+    it('updates the error state correctly for unsuccessful "GET" requests', async () => {
         api.get.mockResolvedValueOnce({
             status: 500,
             data: { message: 'get-request-test-error' },
@@ -151,7 +151,7 @@ describe('useFetch hook', () => {
         expect(result.current.error).toBe('get-request-test-error');
     });
 
-    it('should update the error state correcly for unsuccessful "POST" requests', async () => {
+    it('updates the error state correctly for unsuccessful "POST" requests', async () => {
         api.post.mockResolvedValueOnce({
             status: 500,
             data: { message: 'post-request-test-error' },
@@ -161,7 +161,7 @@ describe('useFetch hook', () => {
         expect(result.current.error).toBe('post-request-test-error');
     });
 
-    it('should update the error state correcly for unsuccessful "GET" requests', async () => {
+    it('updates the error state correctly for unsuccessful "GET" requests', async () => {
         api.patch.mockResolvedValueOnce({
             status: 500,
             data: { message: 'patch-request-test-error' },
