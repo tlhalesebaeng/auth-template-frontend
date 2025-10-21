@@ -63,4 +63,38 @@ describe('RoutesConfig component', () => {
         const signup = screen.getByText('Set a new password');
         expect(signup).toBeInTheDocument();
     });
+
+    it('renders the RouteError component under non-existing route', () => {
+        const nonExistingRoutes = [
+            '/users',
+            '/users/pass',
+            'users/signup',
+            '/home-page',
+            'users/password/reset-code',
+            '/users/verify/password-code',
+            '/udefined/route',
+        ];
+
+        const index = Math.floor(Math.random() * 8);
+
+        const router = createMemoryRouter(routesConfig, {
+            initialEntries: [nonExistingRoutes[index]],
+        });
+
+        render(<RouterProvider router={router} />);
+
+        const heading = screen.getByRole('heading', {
+            level: 1,
+            name: 'An Error Has Occurred',
+        });
+        expect(heading).toBeInTheDocument();
+
+        const message = screen.getByText(
+            `No route matches URL "${nonExistingRoutes[index]}"`
+        );
+        expect(message).toBeInTheDocument();
+
+        const status = screen.getByText('404');
+        expect(status).toBeInTheDocument();
+    });
 });
