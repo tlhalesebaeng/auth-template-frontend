@@ -121,4 +121,34 @@ describe('useFetch hook', () => {
         expect(response.status).toBe(200);
         expect(response.data).toBe('patch-request-test-data');
     });
+
+    it('should update the error state correcly for unsuccessful "GET" requests', async () => {
+        api.get.mockResolvedValueOnce({
+            status: 500,
+            data: { message: 'get-request-test-error' },
+        });
+        const { result } = renderHook(() => useFetch());
+        await act(async () => await result.current.res('/url', 'get'));
+        expect(result.current.error).toBe('get-request-test-error');
+    });
+
+    it('should update the error state correcly for unsuccessful "POST" requests', async () => {
+        api.post.mockResolvedValueOnce({
+            status: 500,
+            data: { message: 'post-request-test-error' },
+        });
+        const { result } = renderHook(() => useFetch());
+        await act(async () => await result.current.res('/url', 'post'));
+        expect(result.current.error).toBe('post-request-test-error');
+    });
+
+    it('should update the error state correcly for unsuccessful "GET" requests', async () => {
+        api.patch.mockResolvedValueOnce({
+            status: 500,
+            data: { message: 'patch-request-test-error' },
+        });
+        const { result } = renderHook(() => useFetch());
+        await act(async () => await result.current.res('/url', 'patch'));
+        expect(result.current.error).toBe('patch-request-test-error');
+    });
 });
