@@ -12,6 +12,10 @@ describe('useFetch hook', () => {
         },
     }));
 
+    beforeEach(() => {
+        vi.clearAllMocks();
+    });
+
     it('should return an isLoading property', () => {
         const { result } = renderHook(() => useFetch());
         expect(result.current.isLoading).toBeDefined();
