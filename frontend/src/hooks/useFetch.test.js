@@ -4,25 +4,6 @@ import api from '../utils/requestInstance.js';
 import { useFetch } from './useFetch.js';
 
 describe('useFetch hook', () => {
-    // vi.mock('../utils/requestInstance.js', () => {
-    //     const get = vi.fn(() => ({
-    //         status: 200,
-    //         data: 'get-request-test-data',
-    //     }));
-
-    //     const post = vi.fn(() => ({
-    //         status: 200,
-    //         data: 'post-request-test-data',
-    //     }));
-
-    //     const patch = vi.fn(() => ({
-    //         status: 200,
-    //         data: 'patch-request-test-data',
-    //     }));
-
-    //     return { default: { get, post, patch } };
-    // });
-
     vi.mock('../utils/requestInstance.js', () => ({
         default: {
             get: vi.fn(),
