@@ -69,6 +69,7 @@ describe('useFetch hook', () => {
         await act(async () => await result.current.res('/get-test-url', 'get'));
 
         expect(api.get).toHaveBeenCalled();
+        expect(api.get).toHaveBeenCalledWith('/get-test-url');
     });
 
     it('should call the "POST" method with the correct arguments', async () => {
@@ -80,6 +81,7 @@ describe('useFetch hook', () => {
         );
 
         expect(api.post).toHaveBeenCalled();
+        expect(api.post).toHaveBeenCalledWith('/post-test-url', {});
     });
 
     it('should call the "PATCH" method with the correct arguments', async () => {
@@ -91,6 +93,7 @@ describe('useFetch hook', () => {
         );
 
         expect(api.patch).toHaveBeenCalled();
+        expect(api.patch).toHaveBeenCalledWith('/patch-test-url', {});
     });
 
     it('should return the expected response data for a successful "GET" request', async () => {
