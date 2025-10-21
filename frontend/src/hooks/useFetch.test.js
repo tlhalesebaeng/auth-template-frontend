@@ -3,6 +3,25 @@ import { act, renderHook } from '@testing-library/react';
 import { useFetch } from './useFetch.js';
 
 describe('useFetch hook', () => {
+    vi.mock('../utils/requestInstance.js', () => {
+        const get = vi.fn(() => ({
+            status: 200,
+            data: 'get-request-test-data',
+        }));
+
+        const post = vi.fn(() => ({
+            status: 200,
+            data: 'post-request-test-data',
+        }));
+
+        const patch = vi.fn(() => ({
+            status: 200,
+            data: 'patch-request-test-data',
+        }));
+
+        return { default: { get, post, patch } };
+    });
+
     it('should return an isLoading property', () => {
         const { result } = renderHook(() => useFetch());
         expect(result.current.isLoading).toBeDefined();
@@ -47,5 +66,38 @@ describe('useFetch hook', () => {
         const { result } = renderHook(() => useFetch());
         act(() => result.current.setError('test-error'));
         expect(result.current.error).toBe('test-error');
+    });
+
+    it('should return the expected response data for a "GET" request', async () => {
+        const { result } = renderHook(() => useFetch());
+        let response;
+        await act(async () => {
+            response = await result.current.res('/url', 'get');
+        });
+
+        expect(response.status).toBe(200);
+        expect(response.data).toBe('get-request-test-data');
+    });
+
+    it('should return the expected response data for a "POST" request', async () => {
+        const { result } = renderHook(() => useFetch());
+        let response;
+        await act(async () => {
+            response = await result.current.res('/url', 'post');
+        });
+
+        expect(response.status).toBe(200);
+        expect(response.data).toBe('post-request-test-data');
+    });
+
+    it('should return the expected response data for a "PATCH" request', async () => {
+        const { result } = renderHook(() => useFetch());
+        let response;
+        await act(async () => {
+            response = await result.current.res('/url', 'patch');
+        });
+
+        expect(response.status).toBe(200);
+        expect(response.data).toBe('patch-request-test-data');
     });
 });
