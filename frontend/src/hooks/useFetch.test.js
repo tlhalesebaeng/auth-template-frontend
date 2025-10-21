@@ -75,6 +75,7 @@ describe('useFetch hook', () => {
 
         expect(response.status).toBe(200);
         expect(response.data).toBe('get-request-test-data');
+        expect(api.get).toHaveBeenCalled();
     });
 
     it('should return the expected response data for a successful "POST" request', async () => {
@@ -90,6 +91,7 @@ describe('useFetch hook', () => {
 
         expect(response.status).toBe(200);
         expect(response.data).toBe('post-request-test-data');
+        expect(api.post).toHaveBeenCalled();
     });
 
     it('should return the expected response data for a successful "PATCH" request', async () => {
@@ -105,6 +107,7 @@ describe('useFetch hook', () => {
 
         expect(response.status).toBe(200);
         expect(response.data).toBe('patch-request-test-data');
+        expect(api.patch).toHaveBeenCalled();
     });
 
     it('should update the error state correcly for unsuccessful "GET" requests', async () => {
