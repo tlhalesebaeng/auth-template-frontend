@@ -1,26 +1,35 @@
 import { describe, expect, it, vi } from 'vitest';
 import { act, renderHook } from '@testing-library/react';
+import api from '../utils/requestInstance.js';
 import { useFetch } from './useFetch.js';
 
 describe('useFetch hook', () => {
-    vi.mock('../utils/requestInstance.js', () => {
-        const get = vi.fn(() => ({
-            status: 200,
-            data: 'get-request-test-data',
-        }));
+    // vi.mock('../utils/requestInstance.js', () => {
+    //     const get = vi.fn(() => ({
+    //         status: 200,
+    //         data: 'get-request-test-data',
+    //     }));
 
-        const post = vi.fn(() => ({
-            status: 200,
-            data: 'post-request-test-data',
-        }));
+    //     const post = vi.fn(() => ({
+    //         status: 200,
+    //         data: 'post-request-test-data',
+    //     }));
 
-        const patch = vi.fn(() => ({
-            status: 200,
-            data: 'patch-request-test-data',
-        }));
+    //     const patch = vi.fn(() => ({
+    //         status: 200,
+    //         data: 'patch-request-test-data',
+    //     }));
 
-        return { default: { get, post, patch } };
-    });
+    //     return { default: { get, post, patch } };
+    // });
+
+    vi.mock('../utils/requestInstance.js', () => ({
+        default: {
+            get: vi.fn(),
+            post: vi.fn(),
+            patch: vi.fn(),
+        },
+    }));
 
     it('should return an isLoading property', () => {
         const { result } = renderHook(() => useFetch());
@@ -68,7 +77,11 @@ describe('useFetch hook', () => {
         expect(result.current.error).toBe('test-error');
     });
 
-    it('should return the expected response data for a "GET" request', async () => {
+    it('should return the expected response data for a successful "GET" request', async () => {
+        api.get.mockResolvedValueOnce({
+            status: 200,
+            data: 'get-request-test-data',
+        });
         const { result } = renderHook(() => useFetch());
         let response;
         await act(async () => {
@@ -79,7 +92,11 @@ describe('useFetch hook', () => {
         expect(response.data).toBe('get-request-test-data');
     });
 
-    it('should return the expected response data for a "POST" request', async () => {
+    it('should return the expected response data for a successful "POST" request', async () => {
+        api.post.mockResolvedValueOnce({
+            status: 200,
+            data: 'post-request-test-data',
+        });
         const { result } = renderHook(() => useFetch());
         let response;
         await act(async () => {
@@ -90,7 +107,11 @@ describe('useFetch hook', () => {
         expect(response.data).toBe('post-request-test-data');
     });
 
-    it('should return the expected response data for a "PATCH" request', async () => {
+    it('should return the expected response data for a successful "PATCH" request', async () => {
+        api.patch.mockResolvedValueOnce({
+            status: 200,
+            data: 'patch-request-test-data',
+        });
         const { result } = renderHook(() => useFetch());
         let response;
         await act(async () => {
