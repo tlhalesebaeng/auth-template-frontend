@@ -62,6 +62,37 @@ describe('useFetch hook', () => {
         expect(result.current.error).toBe('test-error');
     });
 
+    it('should call the "GET" method with the correct arguments', async () => {
+        api.get.mockResolvedValueOnce({});
+
+        const { result } = renderHook(() => useFetch());
+        await act(async () => await result.current.res('/get-test-url', 'get'));
+
+        expect(api.get).toHaveBeenCalled();
+    });
+
+    it('should call the "POST" method with the correct arguments', async () => {
+        api.post.mockResolvedValueOnce({});
+
+        const { result } = renderHook(() => useFetch());
+        await act(
+            async () => await result.current.res('/post-test-url', 'post')
+        );
+
+        expect(api.post).toHaveBeenCalled();
+    });
+
+    it('should call the "PATCH" method with the correct arguments', async () => {
+        api.patch.mockResolvedValueOnce({});
+
+        const { result } = renderHook(() => useFetch());
+        await act(
+            async () => await result.current.res('/patch-test-url', 'patch')
+        );
+
+        expect(api.patch).toHaveBeenCalled();
+    });
+
     it('should return the expected response data for a successful "GET" request', async () => {
         api.get.mockResolvedValueOnce({
             status: 200,
@@ -70,12 +101,11 @@ describe('useFetch hook', () => {
         const { result } = renderHook(() => useFetch());
         let response;
         await act(async () => {
-            response = await result.current.res('/url', 'get');
+            response = await result.current.res('/get-test-url', 'get');
         });
 
         expect(response.status).toBe(200);
         expect(response.data).toBe('get-request-test-data');
-        expect(api.get).toHaveBeenCalled();
     });
 
     it('should return the expected response data for a successful "POST" request', async () => {
@@ -86,12 +116,11 @@ describe('useFetch hook', () => {
         const { result } = renderHook(() => useFetch());
         let response;
         await act(async () => {
-            response = await result.current.res('/url', 'post');
+            response = await result.current.res('/post-test-url', 'post');
         });
 
         expect(response.status).toBe(200);
         expect(response.data).toBe('post-request-test-data');
-        expect(api.post).toHaveBeenCalled();
     });
 
     it('should return the expected response data for a successful "PATCH" request', async () => {
@@ -102,12 +131,11 @@ describe('useFetch hook', () => {
         const { result } = renderHook(() => useFetch());
         let response;
         await act(async () => {
-            response = await result.current.res('/url', 'patch');
+            response = await result.current.res('/patch-test-url', 'patch');
         });
 
         expect(response.status).toBe(200);
         expect(response.data).toBe('patch-request-test-data');
-        expect(api.patch).toHaveBeenCalled();
     });
 
     it('should update the error state correcly for unsuccessful "GET" requests', async () => {
