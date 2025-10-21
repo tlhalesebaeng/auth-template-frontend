@@ -5,6 +5,7 @@ import ForgotPassword from '../features/auth/forgot-password/ForgotPassword.jsx'
 import CodeVerification from '../features/auth/code-verification/CodeVerification.jsx';
 import Home from '../features/Home.jsx';
 import RouteError from '../features/errors/routes/main/RouteError.jsx';
+import { Outlet, redirect } from 'react-router-dom';
 
 const routesConfig = [
     {
@@ -16,28 +17,23 @@ const routesConfig = [
                 element: <Login />,
             },
             {
-                path: 'users',
+                path: 'users/signup',
+                element: <Signup />,
+            },
+            {
+                path: 'users/password/reset',
                 children: [
                     {
-                        path: 'signup',
-                        element: <Signup />,
+                        index: true,
+                        element: <ForgotPassword />,
                     },
                     {
-                        path: 'password/reset',
-                        children: [
-                            {
-                                index: true,
-                                element: <ForgotPassword />,
-                            },
-                            {
-                                path: 'verify/code',
-                                element: <CodeVerification />,
-                            },
-                            {
-                                path: ':code/new',
-                                element: <ResetPassword />,
-                            },
-                        ],
+                        path: 'verify/code',
+                        element: <CodeVerification />,
+                    },
+                    {
+                        path: ':code/new',
+                        element: <ResetPassword />,
                     },
                 ],
             },
