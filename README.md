@@ -1,46 +1,43 @@
-# Full Stack Authentication App
+# Authentication Template - Frontend
 
-A full-stack authentication application built. This app allows users to register, log in, and access the home page.
+The frontend of the full-stack authentication template I built. Whether you are learning about authentication or building a new project, this template has almost all the necessecities need to achieve all these goals.
 
 ## 🔥 Features
 
-- User registration with validation
-- Secure user login with JWT authentication
-- Password hashing using bcrypt
-- Responsive UI built with React
+-   User registration with input validation
+-   Secure user login using JWT
+-   Responsive UI
 
 ## 🛠️ Tech Stack
 
-**Frontend:**
-- React
-- Axios
-- React Router DOM
+-   HTML
+-   CSS
+-   JavaScript + React
 
 ## 🚀 Getting Started
 
 ### Prerequisites
 
-- Node.js and npm
+-   Node.js and NPM
 
 ### 1. Clone the repository
+
 ```bash
 git clone https://github.com/tlhalesebaeng/auth-template-frontend.git
 ```
-### 2. Navigate to the root directory
-```bash
-cd auth-template-frontend
-```
 
-### 3. Install frontend dependencies
+### 2. Install dependencies
+
 ```bash
-cd frontend
 npm install
 ```
-### 4. Start the frontend
+
+### 3. Start the development server
 
 ```bash
 npm start
 ```
+
 The app will be accessible on http://localhost:5173
 
-### Developed by Tlhalefo
+### Proudly developed by Tlhalefo
