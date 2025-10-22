@@ -1,3 +1,46 @@
-# quiz-generator-app
+# Full Stack Authentication App
 
-This is a repository for the [quiz generator app](https://quiz-generator-mmbx.onrender.com/) that i am currently working on.
+A full-stack authentication application built. This app allows users to register, log in, and access the home page.
+
+## 🔥 Features
+
+- User registration with validation
+- Secure user login with JWT authentication
+- Password hashing using bcrypt
+- Responsive UI built with React
+
+## 🛠️ Tech Stack
+
+**Frontend:**
+- React
+- Axios
+- React Router DOM
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js and npm
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/tlhalesebaeng/auth-template-frontend.git
+```
+### 2. Navigate to the root directory
+```bash
+cd auth-template-frontend
+```
+
+### 3. Install frontend dependencies
+```bash
+cd frontend
+npm install
+```
+### 4. Start the frontend
+
+```bash
+npm start
+```
+The app will be accessible on http://localhost:5173
+
+### Developed by Tlhalefo
